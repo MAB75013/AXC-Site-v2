@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aries X Consulting — AXC</title>
+<style>
+/* ── RESET & BASE ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#080808;
+  color:#F5F2EC;
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── VARIABLES ── */
+:root{
+  --black:#080808;
+  --deep:#111111;
+  --card:#161616;
+  --border:rgba(255,255,255,0.07);
+  --gold:#C9A84C;
+  --gold-light:#E8C97A;
+  --gold-dim:rgba(201,168,76,0.15);
+  --white:#F5F2EC;
+  --muted:rgba(245,242,236,0.45);
+  --accent-blue:#3A7BD5;
+  --accent-green:#2E7D52;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.5rem 4rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,8,8,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-size:1.5rem;font-weight:700;letter-spacing:.1em;
+  color:var(--gold);text-decoration:none;
+  font-family:Georgia,serif;
+}
+.nav-logo span{
+  color:rgba(245,242,236,0.5);font-weight:400;
+  font-size:.75rem;display:block;letter-spacing:.28em;margin-top:-2px;
+}
+.nav-links{display:flex;gap:2.5rem;align-items:center;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:400;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{
+  padding:.55rem 1.5rem;
+  border:1px solid var(--gold)!important;
+  color:var(--gold)!important;
+  transition:all .3s!important;
+}
+.nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:8rem 4rem 4rem;
+  position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,168,76,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse 50% 80% at 20% 80%,rgba(58,123,213,0.04) 0%,transparent 50%),
+             #080808;
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:.025;
+  background-image:linear-gradient(var(--white) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--white) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-content{position:relative;max-width:1200px;width:100%}
+
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+.hero-eyebrow .line{width:40px;height:1px;background:var(--gold)}
+.hero-eyebrow span{
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+.hero-title{
+  font-size:clamp(3rem,7vw,6.5rem);
+  font-weight:400;line-height:1.05;margin-bottom:1.5rem;
+  max-width:800px;
+}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+
+.hero-sub{
+  font-size:1rem;color:var(--muted);
+  max-width:520px;margin-bottom:3rem;line-height:1.85;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+}
+
+.hero-actions{display:flex;gap:1.5rem;flex-wrap:wrap}
+.btn-primary{
+  padding:1rem 2.5rem;background:var(--gold);color:var(--black);
+  text-decoration:none;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:500;
+  transition:all .3s;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-ghost{
+  padding:1rem 2.5rem;border:1px solid var(--border);color:var(--white);
+  text-decoration:none;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  transition:all .3s;display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+.hero-stats{
+  display:flex;gap:4rem;margin-top:5rem;padding-top:3rem;
+  border-top:1px solid var(--border);flex-wrap:wrap;
+}
+.stat-num{
+  font-size:2.8rem;font-weight:400;color:var(--gold);line-height:1;
+}
+.stat-lbl{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-top:.3rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+/* ── SECTION BASE ── */
+section{padding:7rem 4rem}
+.section-inner{max-width:1200px;margin:0 auto}
+
+.s-eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.s-eyebrow .line{width:28px;height:1px;background:var(--gold)}
+.s-eyebrow span{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.s-title{
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:400;line-height:1.15;
+}
+.s-desc{
+  color:var(--muted);max-width:540px;margin-top:.9rem;
+  font-size:.93rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+}
+
+/* ── ABOUT ── */
+#about{background:var(--deep)}
+
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
+}
+
+.about-frame{
+  width:100%;aspect-ratio:3/4;background:var(--card);
+  border:1px solid var(--border);overflow:hidden;position:relative;
+}
+.about-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+
+.about-badge{
+  position:absolute;bottom:-1.2rem;right:-1.2rem;
+  background:var(--gold);color:var(--black);
+  padding:1.4rem 1.6rem;text-align:center;min-width:125px;
+}
+.about-badge .bn{font-size:2.6rem;font-weight:400;line-height:1}
+.about-badge .bl{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.3rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+.about-body p{
+  color:var(--muted);font-size:.93rem;line-height:1.95;margin-bottom:1.4rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+}
+.about-body strong{color:var(--white);font-weight:500}
+
+.mission-quote{
+  margin-top:1.8rem;padding:1.4rem;
+  border-left:2px solid var(--gold);background:var(--gold-dim);
+}
+.mission-quote p{
+  font-size:1rem;font-style:italic;color:var(--white);line-height:1.7;margin:0;
+}
+
+.about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+.tag{
+  padding:.3rem .9rem;border:1px solid var(--border);
+  font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif;
+  transition:all .3s;cursor:default;
+}
+.tag:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── EXPERTISE ── */
+#expertise{background:var(--black)}
+
+.exp-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);margin-top:3.5rem;
+}
+.exp-card{
+  background:var(--deep);padding:2.8rem 2.2rem;
+  position:relative;overflow:hidden;transition:background .4s;cursor:default;
+}
+.exp-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  transform:scaleX(0);transform-origin:left;transition:transform .5s;
+}
+.c1::before{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.c2::before{background:linear-gradient(90deg,var(--accent-blue),#6aA0e8)}
+.c3::before{background:linear-gradient(90deg,var(--accent-green),#5ab87a)}
+.exp-card:hover{background:var(--card)}
+.exp-card:hover::before{transform:scaleX(1)}
+
+.exp-num{
+  font-size:5rem;font-weight:400;color:var(--border);
+  position:absolute;top:1rem;right:1.5rem;line-height:1;
+}
+
+.exp-icon{
+  width:46px;height:46px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.8rem;font-size:1.3rem;
+}
+
+.exp-title{font-size:1.5rem;font-weight:400;margin-bottom:.7rem}
+
+.exp-desc{
+  color:var(--muted);font-size:.82rem;line-height:1.85;margin-bottom:1.8rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+}
+
+.exp-list{list-style:none}
+.exp-list li{
+  font-size:.8rem;color:var(--muted);
+  padding:.48rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:baseline;gap:.7rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+  transition:color .3s;
+}
+.exp-list li:last-child{border-bottom:none}
+.exp-card:hover .exp-list li{color:var(--white)}
+.exp-list li::before{content:'→';font-size:.65rem;flex-shrink:0}
+.c1 .exp-list li::before{color:var(--gold)}
+.c2 .exp-list li::before{color:var(--accent-blue)}
+.c3 .exp-list li::before{color:var(--accent-green)}
+
+/* ── CLIENTS ── */
+#clients{background:var(--deep)}
+
+.clients-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:3rem;flex-wrap:wrap;gap:2rem;
+}
+.clients-count{
+  font-size:.93rem;color:var(--muted);font-style:italic;font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.clients-count strong{
+  font-style:normal;font-size:2.2rem;color:var(--gold);
+  display:block;line-height:1;font-weight:400;
+}
+
+.clients-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);
+  gap:1px;background:var(--border);
+}
+.client-cell{
+  background:var(--card);aspect-ratio:3/2;
+  display:flex;align-items:center;justify-content:center;
+  padding:.7rem;transition:background .3s;
+}
+.client-cell:hover{background:#1e1e1e}
+.client-name{
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);text-align:center;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  transition:color .3s;line-height:1.4;
+}
+.client-cell:hover .client-name{color:var(--white)}
+
+/* ── REX ── */
+#rex{background:var(--black)}
+
+.rex-tip{
+  display:flex;align-items:center;gap:.8rem;
+  background:var(--gold-dim);border:1px solid rgba(201,168,76,0.2);
+  padding:.75rem 1.2rem;margin-bottom:2.5rem;
+  font-size:.75rem;color:var(--gold);letter-spacing:.07em;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+.rex-card{border:1px solid var(--border);margin-bottom:2px;overflow:hidden;transition:border-color .3s}
+.rex-card:hover{border-color:rgba(255,255,255,.12)}
+.rex-card.open{border-color:rgba(201,168,76,0.25)}
+
+.rex-head{
+  padding:2rem 2.2rem;display:flex;align-items:flex-start;justify-content:space-between;
+  cursor:pointer;background:var(--deep);transition:background .3s;
+}
+.rex-head:hover{background:var(--card)}
+
+.rex-domain{
+  display:inline-block;padding:.22rem .7rem;margin-bottom:.7rem;
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  border:1px solid;font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.d-biz{color:var(--gold);border-color:rgba(201,168,76,0.3);background:var(--gold-dim)}
+.d-dig{color:#7aaade;border-color:rgba(58,123,213,0.3);background:rgba(58,123,213,0.1)}
+.d-sus{color:#6dc98a;border-color:rgba(46,125,82,0.3);background:rgba(46,125,82,0.1)}
+
+.rex-title{font-size:1.35rem;font-weight:400}
+.rex-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:.7rem}
+.rex-meta span{
+  font-size:.7rem;color:var(--muted);
+  display:flex;align-items:center;gap:.35rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.rex-meta span::before{content:'◆';color:var(--gold);font-size:.44rem}
+
+.rex-tog{
+  width:30px;height:30px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:1.1rem;flex-shrink:0;margin-left:1rem;
+  transition:all .3s;font-style:normal;
+}
+.rex-card.open .rex-tog{transform:rotate(45deg);color:var(--gold);border-color:var(--gold)}
+
+.rex-body{display:none;padding:2.2rem;background:#0f1a12;border-top:1px solid var(--border)}
+.rex-card.open .rex-body{display:block}
+
+.rex-body-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+
+.rex-lbl{
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.7rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.rex-txt{font-size:.84rem;color:var(--muted);line-height:1.85;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300}
+
+.rex-ul{list-style:none}
+.rex-ul li{
+  font-size:.82rem;color:var(--muted);padding:.38rem 0;
+  display:flex;align-items:flex-start;gap:.6rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
+}
+.rex-ul li::before{content:'◆';color:var(--gold);font-size:.42rem;margin-top:.5rem;flex-shrink:0}
+
+.rex-kpis{
+  display:flex;gap:3rem;flex-wrap:wrap;
+  margin-top:1.8rem;padding:1.5rem;
+  background:var(--card);border:1px solid var(--border);
+}
+.kpi .kv{font-size:2rem;font-weight:400;color:var(--gold);line-height:1}
+.kpi .kl{
+  font-size:.6rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);margin-top:.25rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials{background:var(--deep)}
+
+.testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);margin-top:3.5rem;
+}
+.testi-card{background:var(--card);padding:2.5rem 2rem;position:relative}
+.t-quote{
+  font-size:4.5rem;color:var(--gold-dim);
+  line-height:1;position:absolute;top:.5rem;left:1.5rem;
+}
+.t-stars{color:var(--gold);font-size:.73rem;letter-spacing:.12em;margin-bottom:.3rem;font-family:'Helvetica Neue',Arial,sans-serif}
+.t-text{
+  font-size:1rem;font-style:italic;color:var(--white);
+  line-height:1.75;margin-top:2rem;position:relative;z-index:1;
+}
+.t-author{margin-top:1.8rem;padding-top:1.3rem;border-top:1px solid var(--border)}
+.t-name{font-size:.85rem;font-weight:500;font-family:'Helvetica Neue',Arial,sans-serif}
+.t-role{font-size:.72rem;color:var(--muted);margin-top:.15rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300}
+
+/* ── INSIGHTS ── */
+#insights{background:var(--black)}
+
+.insights-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;
+}
+.insights-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1px;background:var(--border)}
+.ins-card{background:var(--deep);overflow:hidden;transition:background .3s;cursor:pointer}
+.ins-card:hover{background:var(--card)}
+.ins-img{
+  width:100%;aspect-ratio:16/9;background:var(--card);
+  display:flex;align-items:center;justify-content:center;
+}
+.ins-img.sm{aspect-ratio:4/3}
+.ins-img-ph{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-align:center;padding:1rem;font-family:'Helvetica Neue',Arial,sans-serif}
+.ins-body{padding:1.8rem 1.8rem .8rem}
+.ins-tag{
+  font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:.7rem;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.ins-title{
+  font-size:1.15rem;font-weight:400;line-height:1.4;margin-bottom:.7rem;
+  transition:color .3s;
+}
+.ins-card:hover .ins-title{color:var(--gold-light)}
+.ins-desc{font-size:.79rem;color:var(--muted);line-height:1.75;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300}
+.ins-foot{padding:.8rem 1.8rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
+.ins-date{font-size:.68rem;color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif}
+.ins-arr{color:var(--gold);font-size:.9rem}
+
+/* ── CONTACT ── */
+#contact{background:var(--deep)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
+
+.c-info{margin-top:2.5rem}
+.c-item{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.c-icon{
+  width:38px;height:38px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:.93rem;flex-shrink:0;
+}
+.c-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif}
+.c-val{font-size:.87rem;margin-top:.15rem;font-family:'Helvetica Neue',Arial,sans-serif}
+.c-val a{color:var(--gold);text-decoration:none}
+.c-val a:hover{color:var(--gold-light)}
+
+.social-row{display:flex;gap:.7rem;margin-top:2rem}
+.social-pill{
+  padding:.38rem 1rem;border:1px solid var(--border);
+  font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  transition:all .3s;font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.social-pill:hover{border-color:var(--gold);color:var(--gold)}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+.form-g{margin-bottom:.9rem}
+.form-lbl{
+  display:block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.45rem;font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.form-input,.form-select,.form-ta{
+  width:100%;background:var(--card);border:1px solid var(--border);color:var(--white);
+  padding:.85rem 1.1rem;font-family:'Helvetica Neue',Arial,sans-serif;
+  font-size:.84rem;font-weight:300;outline:none;transition:border-color .3s;appearance:none;
+}
+.form-input:focus,.form-select:focus,.form-ta:focus{border-color:var(--gold)}
+.form-select option{background:var(--deep)}
+.form-ta{min-height:130px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.chip{
+  padding:.33rem .88rem;border:1px solid var(--border);
+  font-size:.64rem;letter-spacing:.12em;color:var(--muted);
+  cursor:pointer;transition:all .25s;background:none;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.chip.on{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+
+.form-submit{
+  width:100%;padding:1.05rem;background:var(--gold);color:var(--black);
+  border:none;cursor:pointer;
+  font-family:'Helvetica Neue',Arial,sans-serif;font-size:.72rem;
+  letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+  transition:all .3s;margin-top:1.2rem;
+}
+.form-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
+.form-submit:disabled{background:var(--accent-green);color:#fff;cursor:default;transform:none}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);border-top:1px solid var(--border);
+  padding:2.5rem 4rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;
+}
+.footer-logo{font-size:.98rem;color:var(--gold);font-weight:700;letter-spacing:.08em}
+.footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+.footer-links a{
+  font-size:.64rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .3s;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+}
+.footer-links a:hover{color:var(--white)}
+.footer-copy{font-size:.66rem;color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif}
+
+/* ── FADE UP ── */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.fu.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  section{padding:4.5rem 1.5rem}
+  #hero{padding:7rem 1.5rem 3.5rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
+  .exp-grid,.testi-grid{grid-template-columns:1fr}
+  .clients-grid{grid-template-columns:repeat(4,1fr)}
+  .rex-body-grid{grid-template-columns:1fr}
+  .insights-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:2rem}
+  footer{flex-direction:column;gap:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    AXC
+    <span>Aries X Consulting</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#clients">Clients</a></li>
+    <li><a href="#rex">Case Studies</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fu">
+      <div class="line"></div>
+      <span>Management Consulting</span>
+    </div>
+    <h1 class="hero-title fu d1">
+      Turning complexity<br>into <em>strategic clarity</em>
+    </h1>
+    <p class="hero-sub fu d2">
+      Senior consulting expertise across Business Excellence, Data & Digital transformation, and Sustainability — for companies that refuse to settle for average.
+    </p>
+    <div class="hero-actions fu d3">
+      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#expertise" class="btn-ghost">Explore Expertise</a>
+    </div>
+    <div class="hero-stats fu d4">
+      <div><div class="stat-num">12+</div><div class="stat-lbl">Years of Experience</div></div>
+      <div><div class="stat-num">31</div><div class="stat-lbl">Clients Served</div></div>
+      <div><div class="stat-num">€1.5M+</div><div class="stat-lbl">OPEX Savings Delivered</div></div>
+      <div><div class="stat-num">10+</div><div class="stat-lbl">Industry Sectors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div style="position:relative" class="fu">
+        <div class="about-frame">
+          <img src="data:image/png;base64,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" alt="Mehdi Abdellaoui">
+        </div>
+        <div class="about-badge">
+          <div class="bn">12</div>
+          <div class="bl">Years<br>Experience</div>
+        </div>
+      </div>
+
+      <div class="about-body fu d1">
+        <div class="s-eyebrow"><div class="line"></div><span>About Mehdi Abdellaoui</span></div>
+        <h2 class="s-title">Where strategy<br>meets execution</h2>
+
+        <div style="margin-top:1.5rem">
+          <p><strong>Aries X Consulting (AXC)</strong> is an independent management consulting firm founded by Mehdi Abdellaoui — a senior consultant with over 12 years of experience transforming complex organisations across Europe.</p>
+          <p>Mehdi has led <strong>digital transformation programmes</strong>, driven <strong>measurable cost reduction</strong>, and built <strong>Net-Zero roadmaps</strong> for some of the world's most demanding organisations — including Kering, Arval (BNP Paribas), and global industrial groups.</p>
+          <p>AXC combines rigorous analytical frameworks with hands-on implementation — bridging the gap between strategy and operational reality.</p>
+        </div>
+
+        <div class="mission-quote">
+          <p>"Our mission is to transform today's challenges into tomorrow's successes — together."</p>
+        </div>
+
+        <div class="about-tags">
+          <span class="tag">Retail & Luxury</span>
+          <span class="tag">Automotive</span>
+          <span class="tag">Aeronautics</span>
+          <span class="tag">Transport</span>
+          <span class="tag">Heavy Industry</span>
+          <span class="tag">Financial Services</span>
+          <span class="tag">Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERTISE ══ -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="s-eyebrow fu"><div class="line"></div><span>Three Domains of Expertise</span></div>
+    <h2 class="s-title fu d1">What AXC does best</h2>
+    <p class="s-desc fu d2">From operational efficiency to digital platforms and carbon strategy — integrated expertise for the challenges that matter most.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card c1 fu">
+        <div class="exp-num">01</div>
+        <div class="exp-icon">◈</div>
+        <h3 class="exp-title">Business Excellence</h3>
+        <p class="exp-desc">Unlocking performance across the full value chain — from process design to P&L management.</p>
+        <ul class="exp-list">
+          <li>Process Optimisation & Lean Management</li>
+          <li>Cost Reduction & OPEX Management</li>
+          <li>Topline Development & Revenue Growth</li>
+          <li>Business Management & Governance</li>
+          <li>Restructuring & TOM Design</li>
+          <li>KPI Frameworks & Performance Management</li>
+        </ul>
+      </div>
+
+      <div class="exp-card c2 fu d1">
+        <div class="exp-num">02</div>
+        <div class="exp-icon">◈</div>
+        <h3 class="exp-title">Data & Digital</h3>
+        <p class="exp-desc">Turning data into decisions — from visualisation to full-stack tool implementation.</p>
+        <ul class="exp-list">
+          <li>Data Visualisation & Dashboard Design</li>
+          <li>Tool Implementation (Jira, PowerBI…)</li>
+          <li>Digital Roadmap & TOM Design</li>
+          <li>UX/UI Design & Product Management</li>
+          <li>Offshore & Cross-Functional Team Mgmt</li>
+          <li>Agile / PSPO Delivery</li>
+        </ul>
+      </div>
+
+      <div class="exp-card c3 fu d2">
+        <div class="exp-num">03</div>
+        <div class="exp-icon">◈</div>
+        <h3 class="exp-title">Sustainability</h3>
+        <p class="exp-desc">From regulatory compliance to Net-Zero strategy — practical paths to measurable impact.</p>
+        <ul class="exp-list">
+          <li>Corporate & Product Carbon Footprint</li>
+          <li>Carbon Accounting & CO₂ Audit</li>
+          <li>Net-Zero Roadmap & Climate Risk</li>
+          <li>Traceability & Supply Chain Transparency</li>
+          <li>ESG Platforms (Enablon, Demeter…)</li>
+          <li>CSRD / DPEF Regulatory Compliance</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLIENTS ══ -->
+<section id="clients">
+  <div class="section-inner">
+    <div class="clients-top">
+      <div class="fu">
+        <div class="s-eyebrow"><div class="line"></div><span>Trusted By</span></div>
+        <h2 class="s-title">Clients & Partners</h2>
+      </div>
+      <div class="clients-count fu">
+        <strong>31</strong>
+        brands & organisations
+      </div>
+    </div>
+
+    <div class="clients-grid fu">
+      <div class="client-cell"><div class="client-name">Accenture</div></div>
+      <div class="client-cell"><div class="client-name">TNP Consultant</div></div>
+      <div class="client-cell"><div class="client-name">Kering</div></div>
+      <div class="client-cell"><div class="client-name">LVMH</div></div>
+      <div class="client-cell"><div class="client-name">Dior Couture</div></div>
+      <div class="client-cell"><div class="client-name">Groupe Pochet</div></div>
+      <div class="client-cell"><div class="client-name">Arval</div></div>
+
+      <div class="client-cell"><div class="client-name">Adéo</div></div>
+      <div class="client-cell"><div class="client-name">Auchan</div></div>
+      <div class="client-cell"><div class="client-name">Groupe Renault</div></div>
+      <div class="client-cell"><div class="client-name">Renault</div></div>
+      <div class="client-cell"><div class="client-name">Jaguar Land Rover</div></div>
+      <div class="client-cell"><div class="client-name">Yamaha</div></div>
+      <div class="client-cell"><div class="client-name">Honda</div></div>
+
+      <div class="client-cell"><div class="client-name">Stellantis</div></div>
+      <div class="client-cell"><div class="client-name">Peugeot</div></div>
+      <div class="client-cell"><div class="client-name">Airbus Aviation</div></div>
+      <div class="client-cell"><div class="client-name">Airbus Helicopter</div></div>
+      <div class="client-cell"><div class="client-name">AKKA Consulting</div></div>
+      <div class="client-cell"><div class="client-name">Servier</div></div>
+      <div class="client-cell"><div class="client-name">Michelin</div></div>
+
+      <div class="client-cell"><div class="client-name">SMS Concast AG</div></div>
+      <div class="client-cell"><div class="client-name">Lacoste</div></div>
+      <div class="client-cell"><div class="client-name">Galeries Lafayette</div></div>
+      <div class="client-cell"><div class="client-name">Smokey</div></div>
+      <div class="client-cell"><div class="client-name">Recyclerie Solidaire</div></div>
+      <div class="client-cell"><div class="client-name">CMA-CGM</div></div>
+      <div class="client-cell"><div class="client-name">CEVA</div></div>
+
+      <div class="client-cell"><div class="client-name">Mars Petcare</div></div>
+      <div class="client-cell"><div class="client-name">Ministère de l'Intérieur</div></div>
+      <div class="client-cell"><div class="client-name">ArcelorMittal</div></div>
+      <div class="client-cell" style="background:transparent"></div>
+      <div class="client-cell" style="background:transparent"></div>
+      <div class="client-cell" style="background:transparent"></div>
+      <div class="client-cell" style="background:transparent"></div>
+    </div>
+
+    <p style="margin-top:1.8rem;text-align:center;font-size:.72rem;color:var(--muted);font-style:italic;font-family:'Helvetica Neue',Arial,sans-serif">
+      Logo placeholders — send your logos to replace the text labels
+    </p>
+  </div>
+</section>
+
+<!-- ══ REX ══ -->
+<section id="rex">
+  <div class="section-inner">
+    <div class="s-eyebrow fu"><div class="line"></div><span>Mission Case Studies</span></div>
+    <h2 class="s-title fu d1">Retours d'Expérience</h2>
+    <p class="s-desc fu d2">Standard template — context, approach, deliverables and measurable impact. Click to expand.</p>
+
+    <div class="rex-tip fu">✦ &nbsp; Standard REX template — duplicate this structure for each new mission</div>
+
+    <!-- REX 1 — Kering -->
+    <div class="rex-card open fu">
+      <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
+        <div>
+          <div class="rex-domain d-biz">Sustainability · Corporate IT</div>
+          <div class="rex-title">Sustainability & Corporate IT Programme Management — Kering Group</div>
+          <div class="rex-meta">
+            <span>Kering Group</span>
+            <span>Jan 2025 — Present</span>
+            <span>Paris, France</span>
+          </div>
+        </div>
+        <div class="rex-tog">+</div>
+      </div>
+      <div class="rex-body">
+        <div class="rex-body-grid">
+          <div>
+            <div class="rex-lbl">Context & Challenge</div>
+            <p class="rex-txt">Kering needed to align 8 strategic areas under a unified governance framework — balancing business priorities, IT dependencies, and CSRD requirements. No cross-stream programme management structure existed.</p>
+          </div>
+          <div>
+            <div class="rex-lbl">Approach & Methodology</div>
+            <p class="rex-txt">End-to-end programme management across 8 streams. Defined governance, steering routines and reporting mechanisms. Built alignment processes between Business, IT and Corporate teams.</p>
+          </div>
+          <div>
+            <div class="rex-lbl">Key Deliverables</div>
+            <ul class="rex-ul">
+              <li>Unified governance framework (8 streams)</li>
+              <li>Steering committees & executive dashboards</li>
+              <li>OPEX optimisation levers & roadmap</li>
+              <li>IT implementation: Demeter, Enablon, EP&L 2.0</li>
+              <li>Biodiversity Dashboard — design & launch</li>
+            </ul>
+          </div>
+          <div>
+            <div class="rex-lbl">Tools & Frameworks</div>
+            <ul class="rex-ul">
+              <li>Jira / Jira X-Ray</li>
+              <li>PowerBI — Executive Dashboards</li>
+              <li>Enablon, Demeter (ESG platforms)</li>
+              <li>Agile / Scrum methodology</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rex-kpis">
+          <div class="kpi"><div class="kv">~€1.5M</div><div class="kl">OPEX Savings</div></div>
+          <div class="kpi"><div class="kv">8</div><div class="kl">Streams Unified</div></div>
+          <div class="kpi"><div class="kv">3</div><div class="kl">IT Tools Deployed</div></div>
+          <div class="kpi"><div class="kv">CSRD</div><div class="kl">Compliance Roadmap</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REX 2 — Arval -->
+    <div class="rex-card fu">
+      <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
+        <div>
+          <div class="rex-domain d-dig">Business Excellence · Digital</div>
+          <div class="rex-title">Interim Global Head — Electric Vehicle Product Line (29 Countries)</div>
+          <div class="rex-meta">
+            <span>Arval — BNP Paribas</span>
+            <span>2021 — 2023</span>
+            <span>Europe (29 countries)</span>
+          </div>
+        </div>
+        <div class="rex-tog">+</div>
+      </div>
+      <div class="rex-body">
+        <div class="rex-body-grid">
+          <div>
+            <div class="rex-lbl">Context & Challenge</div>
+            <p class="rex-txt">Arval faced rapid EV market growth with no unified product strategy across 29 countries. Charging infrastructure, partnerships and IT systems were fragmented, preventing scalable rollout.</p>
+          </div>
+          <div>
+            <div class="rex-lbl">Approach & Methodology</div>
+            <p class="rex-txt">Acted as Interim Global Head to define EV product strategy, KPI framework and pan-European deployment model. Led partnership negotiations and animated a 20+ country EV community.</p>
+          </div>
+          <div>
+            <div class="rex-lbl">Key Deliverables</div>
+            <ul class="rex-ul">
+              <li>EV product strategy & international go-to-market</li>
+              <li>KPI framework for performance monitoring</li>
+              <li>Charging Point offering deployment (EU)</li>
+              <li>IT projects: Payment Card, Charging, Leasing</li>
+              <li>EV community animation (20+ countries)</li>
+            </ul>
+          </div>
+          <div>
+            <div class="rex-lbl">Tools & Frameworks</div>
+            <ul class="rex-ul">
+              <li>SAP — Leasing system integration</li>
+              <li>CRM — Partner management</li>
+              <li>PowerBI — Performance dashboards</li>
+              <li>Agile delivery methodology</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rex-kpis">
+          <div class="kpi"><div class="kv">29</div><div class="kl">Countries Covered</div></div>
+          <div class="kpi"><div class="kv">20+</div><div class="kl">EV Community</div></div>
+          <div class="kpi"><div class="kv">3</div><div class="kl">IT Systems</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REX Template -->
+    <div class="rex-card fu">
+      <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
+        <div>
+          <div class="rex-domain d-sus" style="opacity:.5">Your next domain</div>
+          <div class="rex-title" style="opacity:.4">Mission Title — Add your next case study here</div>
+          <div class="rex-meta">
+            <span>Client</span><span>Duration</span><span>Location</span>
+          </div>
+        </div>
+        <div class="rex-tog">+</div>
+      </div>
+      <div class="rex-body">
+        <div class="rex-body-grid">
+          <div><div class="rex-lbl">Context & Challenge</div><p class="rex-txt" style="opacity:.4;font-style:italic">Describe the client situation, pain points, and strategic stakes…</p></div>
+          <div><div class="rex-lbl">Approach & Methodology</div><p class="rex-txt" style="opacity:.4;font-style:italic">Methodology, frameworks used, and how you structured the work…</p></div>
+          <div><div class="rex-lbl">Key Deliverables</div><p class="rex-txt" style="opacity:.4;font-style:italic">List main outputs and deliverables…</p></div>
+          <div><div class="rex-lbl">Tools & Frameworks</div><p class="rex-txt" style="opacity:.4;font-style:italic">Tools, software, methodologies used…</p></div>
+        </div>
+        <div class="rex-kpis" style="opacity:.3">
+          <div class="kpi"><div class="kv">—</div><div class="kl">KPI 1</div></div>
+          <div class="kpi"><div class="kv">—</div><div class="kl">KPI 2</div></div>
+          <div class="kpi"><div class="kv">—</div><div class="kl">KPI 3</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="s-eyebrow fu"><div class="line"></div><span>Client Testimonials</span></div>
+    <h2 class="s-title fu d1">What clients say</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card fu">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">Mehdi brought exceptional clarity to a complex multi-stream programme. His ability to align business, IT, and sustainability teams was remarkable — and the OPEX results speak for themselves.</p>
+        <div class="t-author">
+          <div class="t-name">Client Name</div>
+          <div class="t-role">CPO / CDO — Global Luxury Group</div>
+        </div>
+      </div>
+      <div class="testi-card fu d1">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">A rare consultant who combines strategic thinking with hands-on execution. AXC helped us structure our EV go-to-market across 29 countries in record time, with real measurable impact.</p>
+        <div class="t-author">
+          <div class="t-name">Client Name</div>
+          <div class="t-role">Global Head of Product — Financial Services</div>
+        </div>
+      </div>
+      <div class="testi-card fu d2">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p class="t-text">Mehdi's sustainability expertise is both technically rigorous and commercially pragmatic. He translated our Net-Zero ambitions into a credible roadmap with clear ownership and milestones.</p>
+        <div class="t-author">
+          <div class="t-name">Client Name</div>
+          <div class="t-role">Sustainability Director — Industrial Group</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS ══ -->
+<section id="insights">
+  <div class="section-inner">
+    <div class="insights-top fu">
+      <div>
+        <div class="s-eyebrow"><div class="line"></div><span>Insights & Point of View</span></div>
+        <h2 class="s-title">Articles & Perspectives</h2>
+      </div>
+      <a href="https://medium.com" target="_blank" class="btn-ghost">Read on Medium →</a>
+    </div>
+    <div class="insights-grid fu">
+      <div class="ins-card">
+        <div class="ins-img"><div class="ins-img-ph">Featured article image</div></div>
+        <div class="ins-body">
+          <span class="ins-tag">Sustainability</span>
+          <h3 class="ins-title">How CSRD is reshaping corporate strategy — and what to do now</h3>
+          <p class="ins-desc">The CSRD is not just a compliance exercise. Companies that treat it as a strategic lever will gain lasting competitive advantage. Here's how.</p>
+        </div>
+        <div class="ins-foot"><span class="ins-date">March 2025</span><span class="ins-arr">↗</span></div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-img sm"><div class="ins-img-ph">Article image</div></div>
+        <div class="ins-body">
+          <span class="ins-tag">Data & Digital</span>
+          <h3 class="ins-title">From dashboard to decision: making PowerBI actually work</h3>
+          <p class="ins-desc">Most BI implementations fail at adoption. A different approach to data design.</p>
+        </div>
+        <div class="ins-foot"><span class="ins-date">Feb 2025</span><span class="ins-arr">↗</span></div>
+      </div>
+      <div class="ins-card">
+        <div class="ins-img sm"><div class="ins-img-ph">Article image</div></div>
+        <div class="ins-body">
+          <span class="ins-tag">Business Excellence</span>
+          <h3 class="ins-title">Cost reduction without cutting value: a lean framework for services</h3>
+          <p class="ins-desc">Sustainable cost reduction is a design challenge — not a budget exercise.</p>
+        </div>
+        <div class="ins-foot"><span class="ins-date">Jan 2025</span><span class="ins-arr">↗</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fu">
+        <div class="s-eyebrow"><div class="line"></div><span>Get In Touch</span></div>
+        <h2 class="s-title">Let's build something meaningful together</h2>
+        <p style="color:var(--muted);margin-top:1rem;font-size:.92rem;line-height:1.9;max-width:370px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300">
+          Whether you have a specific project or are exploring how AXC can support your transformation — I'm happy to have a first conversation.
+        </p>
+        <div class="c-info">
+          <div class="c-item"><div class="c-icon">✉</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:abdellaoui.mehdi@gmail.com">abdellaoui.mehdi@gmail.com</a></div></div></div>
+          <div class="c-item"><div class="c-icon">✆</div><div><div class="c-label">Phone</div><div class="c-val">+33 6 60 71 27 34</div></div></div>
+          <div class="c-item"><div class="c-icon">⌖</div><div><div class="c-label">Location</div><div class="c-val">62 Rue de la Glacière, 75013 Paris</div></div></div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/mehdi-abdellaoui-a4292a44/" target="_blank" class="social-pill">LinkedIn</a>
+          <a href="https://medium.com" target="_blank" class="social-pill">Medium</a>
+          <a href="mailto:abdellaoui.mehdi@gmail.com" class="social-pill">Email</a>
+        </div>
+      </div>
+
+      <div class="fu d1">
+        <div class="form-row">
+          <div class="form-g"><label class="form-lbl">First Name</label><input type="text" class="form-input" placeholder="Jean"></div>
+          <div class="form-g"><label class="form-lbl">Last Name</label><input type="text" class="form-input" placeholder="Dupont"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-g"><label class="form-lbl">Email</label><input type="email" class="form-input" placeholder="jean@company.com"></div>
+          <div class="form-g"><label class="form-lbl">Company</label><input type="text" class="form-input" placeholder="Your Company"></div>
+        </div>
+        <div class="form-g">
+          <label class="form-lbl">Expertise needed</label>
+          <div class="chips">
+            <button class="chip" onclick="this.classList.toggle('on')">Business Excellence</button>
+            <button class="chip" onclick="this.classList.toggle('on')">Data & Digital</button>
+            <button class="chip" onclick="this.classList.toggle('on')">Sustainability</button>
+            <button class="chip" onclick="this.classList.toggle('on')">Multiple / TBD</button>
+          </div>
+        </div>
+        <div class="form-g">
+          <label class="form-lbl">Project type</label>
+          <select class="form-select">
+            <option value="" disabled selected>Select a type</option>
+            <option>Strategic audit & diagnosis</option>
+            <option>Transformation programme management</option>
+            <option>Tool selection & implementation</option>
+            <option>Sustainability / Net-Zero roadmap</option>
+            <option>Cost reduction programme</option>
+            <option>Data visualisation & dashboards</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-g">
+          <label class="form-lbl">Your message</label>
+          <textarea class="form-ta" placeholder="Tell me about your project, timeline and objectives..."></textarea>
+        </div>
+        <button class="form-submit" id="fsub" onclick="this.textContent='✓ Message sent — I will be in touch soon';this.disabled=true">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-logo">AXC — Aries X Consulting</div>
+  <nav class="footer-links">
+    <a href="#about">About</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#clients">Clients</a>
+    <a href="#rex">Case Studies</a>
+    <a href="#insights">Insights</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="footer-copy">© 2025 Aries X Consulting — Paris</div>
+</footer>
+
+<script>
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+},{threshold:0.1});
+document.querySelectorAll('.fu').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
