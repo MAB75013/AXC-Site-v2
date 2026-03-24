@@ -26,9 +26,40 @@ body{
   transition:transform .4s ease;
 }
 
+/* ── CARD LINK RESET ── */
+.ins-card{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* ── TITLE STYLE ── */
+.ins-title{
+  color:var(--white);
+  transition:color .3s;
+}
+
+/* ── DESCRIPTION STYLE ── */
+.ins-desc{
+  transition:color .3s;
+}
+
 /* ── HOVER EFFECT (PREMIUM) ── */
 .ins-card:hover img{
   transform:scale(1.05);
+}
+
+.ins-card:hover .ins-title{
+  color:var(--gold-light);
+}
+
+.ins-card:hover .ins-desc{
+  color:var(--white);
+}
+
+/* ── FIX DEFAULT LINK COLORS ── */
+.ins-card:visited,
+.ins-card:active{
+  color:inherit;
 }
 
 /* ── VARIABLES ── */
