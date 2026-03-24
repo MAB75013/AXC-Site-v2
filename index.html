@@ -1077,69 +1077,71 @@ Enterprise Transformation & Cost Reduction program — Engineering Group
           <a href="mailto:abdellaoui.mehdi@ariesxconsulting.com" class="social-pill">Email</a>
         </div>
       </div>
+<!-- RIGHT SIDE (FORMSPREE FORM) -->
+<div class="fu d1">
 
-      <!-- RIGHT SIDE (FORMSPREE FORM) -->
-      <div class="fu d1">
+  <form action="https://formspree.io/f/mpqyvggj" method="POST">
 
-        <!-- ⚠️ REMPLACE TON_ID PAR TON VRAI ID FORMSPREE -->
-        <form action="https://formspree.io/f/mpqyvggj" method="POST">
+    <!-- Hidden fields -->
+    <input type="hidden" name="_subject" value="New AXC Contact Request">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="text" name="_gotcha" style="display:none">
 
-          <!-- Hidden fields -->
-          <input type="hidden" name="_subject" value="New AXC Contact Request">
-          <input type="text" name="_gotcha" style="display:none">
+    <!-- NAME -->
+    <div class="form-row">
+      <div class="form-g">
+        <label class="form-lbl">First Name</label>
+        <input type="text" name="first_name" class="form-input" placeholder="Jean" required>
+      </div>
 
-          <div class="form-row">
-            <div class="form-g">
-              <label class="form-lbl">First Name</label>
-              <input type="text" name="first_name" class="form-input" required>
-            </div>
-
-            <div class="form-g">
-              <label class="form-lbl">Last Name</label>
-              <input type="text" name="last_name" class="form-input" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-g">
-              <label class="form-lbl">Email</label>
-              <input type="email" name="email" class="form-input" required>
-            </div>
-
-            <div class="form-g">
-              <label class="form-lbl">Company</label>
-              <input type="text" name="company" class="form-input">
-            </div>
-          </div>
-
-          <div class="form-g">
-            <label class="form-lbl">Project type</label>
-            <select name="project" class="form-select">
-              <option>Strategic audit & diagnosis</option>
-              <option>Transformation program management</option>
-              <option>Tool selection & implementation</option>
-              <option>Sustainability / Net-Zero roadmap</option>
-              <option>Cost reduction program</option>
-              <option>Data visualisation & dashboards</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-g">
-            <label class="form-lbl">Your message</label>
-            <textarea name="message" class="form-ta" required></textarea>
-          </div>
-
-          <button type="submit" class="form-submit">
-            Send Message →
-          </button>
-
-        </form>
-
+      <div class="form-g">
+        <label class="form-lbl">Last Name</label>
+        <input type="text" name="last_name" class="form-input" placeholder="Dupont" required>
       </div>
     </div>
-  </div>
-</section>
+
+    <!-- CONTACT -->
+    <div class="form-row">
+      <div class="form-g">
+        <label class="form-lbl">Email</label>
+        <input type="email" name="email" class="form-input" placeholder="jean@company.com" required>
+      </div>
+
+      <div class="form-g">
+        <label class="form-lbl">Company</label>
+        <input type="text" name="company" class="form-input" placeholder="Your Company">
+      </div>
+    </div>
+
+    <!-- PROJECT TYPE -->
+    <div class="form-g">
+      <label class="form-lbl">Project type</label>
+      <select name="project" class="form-select" required>
+        <option value="" disabled selected>Select a type</option>
+        <option>Strategic audit & diagnosis</option>
+        <option>Transformation program management</option>
+        <option>Tool selection & implementation</option>
+        <option>Sustainability / Net-Zero roadmap</option>
+        <option>Cost reduction program</option>
+        <option>Data visualisation & dashboards</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="form-g">
+      <label class="form-lbl">Your message</label>
+      <textarea name="message" class="form-ta" placeholder="Tell me about your project, timeline and objectives..." required></textarea>
+    </div>
+
+    <!-- SUBMIT -->
+    <button type="submit" class="form-submit">
+      Send Message →
+    </button>
+
+  </form>
+
+</div>
 
 <!-- ══ FOOTER ══ -->
 <footer>
