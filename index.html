@@ -1042,59 +1042,100 @@ Enterprise Transformation & Cost Reduction program — Engineering Group
 <section id="contact">
   <div class="section-inner">
     <div class="contact-grid">
+
+      <!-- LEFT SIDE (UNCHANGED) -->
       <div class="fu">
         <div class="s-eyebrow"><div class="line"></div><span>Get In Touch</span></div>
         <h2 class="s-title">Let's build something meaningful together</h2>
         <p style="color:var(--muted);margin-top:1rem;font-size:.92rem;line-height:1.9;max-width:370px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300">
           Whether you have a specific project or are exploring how AXC can support your transformation — I'm happy to have a first conversation.
         </p>
+
         <div class="c-info">
-          <div class="c-item"><div class="c-icon">✉</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:abdellaoui.mehdi@ariesxconsulting.com">abdellaoui.mehdi@ariesxconsulting.com</a></div></div></div>
-          <div class="c-item"><div class="c-icon">⌖</div><div><div class="c-label">Location</div><div class="c-val">Paris, 75013, France</div></div></div>
+          <div class="c-item">
+            <div class="c-icon">✉</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val">
+                <a href="mailto:abdellaoui.mehdi@ariesxconsulting.com">abdellaoui.mehdi@ariesxconsulting.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="c-item">
+            <div class="c-icon">⌖</div>
+            <div>
+              <div class="c-label">Location</div>
+              <div class="c-val">Paris, 75013, France</div>
+            </div>
+          </div>
         </div>
+
         <div class="social-row">
           <a href="https://www.linkedin.com/in/mehdi-abdellaoui-a4292a44/" target="_blank" class="social-pill">LinkedIn</a>
-          <a href="https://medium.com/@abdellaoui.mehdi/@abdellaoui.mehdi" target="_blank" class="social-pill">Medium</a>
+          <a href="https://medium.com/@abdellaoui.mehdi" target="_blank" class="social-pill">Medium</a>
           <a href="mailto:abdellaoui.mehdi@ariesxconsulting.com" class="social-pill">Email</a>
         </div>
       </div>
 
+      <!-- RIGHT SIDE (FORMSPREE FORM) -->
       <div class="fu d1">
-        <div class="form-row">
-          <div class="form-g"><label class="form-lbl">First Name</label><input type="text" class="form-input" placeholder="Jean"></div>
-          <div class="form-g"><label class="form-lbl">Last Name</label><input type="text" class="form-input" placeholder="Dupont"></div>
-        </div>
-        <div class="form-row">
-          <div class="form-g"><label class="form-lbl">Email</label><input type="email" class="form-input" placeholder="jean@company.com"></div>
-          <div class="form-g"><label class="form-lbl">Company</label><input type="text" class="form-input" placeholder="Your Company"></div>
-        </div>
-        <div class="form-g">
-          <label class="form-lbl">Expertise needed</label>
-          <div class="chips">
-            <button class="chip" onclick="this.classList.toggle('on')">Business Excellence</button>
-            <button class="chip" onclick="this.classList.toggle('on')">Data & Digital</button>
-            <button class="chip" onclick="this.classList.toggle('on')">Sustainability</button>
-            <button class="chip" onclick="this.classList.toggle('on')">Multiple / TBD</button>
+
+        <!-- ⚠️ REMPLACE TON_ID PAR TON VRAI ID FORMSPREE -->
+        <form action="https://formspree.io/f/TON_ID" method="POST">
+
+          <!-- Hidden fields -->
+          <input type="hidden" name="_subject" value="New AXC Contact Request">
+          <input type="text" name="_gotcha" style="display:none">
+
+          <div class="form-row">
+            <div class="form-g">
+              <label class="form-lbl">First Name</label>
+              <input type="text" name="first_name" class="form-input" required>
+            </div>
+
+            <div class="form-g">
+              <label class="form-lbl">Last Name</label>
+              <input type="text" name="last_name" class="form-input" required>
+            </div>
           </div>
-        </div>
-        <div class="form-g">
-          <label class="form-lbl">Project type</label>
-          <select class="form-select">
-            <option value="" disabled selected>Select a type</option>
-            <option>Strategic audit & diagnosis</option>
-            <option>Transformation program management</option>
-            <option>Tool selection & implementation</option>
-            <option>Sustainability / Net-Zero roadmap</option>
-            <option>Cost reduction program</option>
-            <option>Data visualisation & dashboards</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-g">
-          <label class="form-lbl">Your message</label>
-          <textarea class="form-ta" placeholder="Tell me about your project, timeline and objectives..."></textarea>
-        </div>
-        <button class="form-submit" id="fsub" onclick="this.textContent='✓ Message sent — I will be in touch soon';this.disabled=true">Send Message →</button>
+
+          <div class="form-row">
+            <div class="form-g">
+              <label class="form-lbl">Email</label>
+              <input type="email" name="email" class="form-input" required>
+            </div>
+
+            <div class="form-g">
+              <label class="form-lbl">Company</label>
+              <input type="text" name="company" class="form-input">
+            </div>
+          </div>
+
+          <div class="form-g">
+            <label class="form-lbl">Project type</label>
+            <select name="project" class="form-select">
+              <option>Strategic audit & diagnosis</option>
+              <option>Transformation program management</option>
+              <option>Tool selection & implementation</option>
+              <option>Sustainability / Net-Zero roadmap</option>
+              <option>Cost reduction program</option>
+              <option>Data visualisation & dashboards</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-g">
+            <label class="form-lbl">Your message</label>
+            <textarea name="message" class="form-ta" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Send Message →
+          </button>
+
+        </form>
+
       </div>
     </div>
   </div>
