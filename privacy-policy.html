@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Aries X Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #111111;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #c8a96e;
+      --accent2:  #8db5a8;
+      --text:     #e8e4de;
+      --muted:    rgba(232,228,222,0.45);
+      --nav-h:    72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600; letter-spacing: 0.12em;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .page-hero {
+      margin-top: var(--nav-h);
+      padding: 80px 48px 60px;
+      border-bottom: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(141,181,168,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .breadcrumb {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { margin: 0 8px; opacity: 0.4; }
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 300; line-height: 1.1;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--accent2); }
+    .page-hero .subtitle {
+      margin-top: 16px; font-size: 14px;
+      color: var(--muted); letter-spacing: 0.04em;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; padding: 72px 48px 120px; }
+
+    .commitment-banner {
+      display: flex; align-items: flex-start; gap: 24px;
+      padding: 32px 36px;
+      background: rgba(141,181,168,0.05);
+      border: 1px solid rgba(141,181,168,0.15);
+      border-radius: 2px; margin-bottom: 64px;
+    }
+    .commitment-icon {
+      flex-shrink: 0; width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(141,181,168,0.1);
+      border: 1px solid rgba(141,181,168,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .commitment-banner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 400;
+      color: var(--accent2); margin-bottom: 8px;
+    }
+    .commitment-banner p { font-size: 14px; color: rgba(232,228,222,0.7); margin: 0; }
+
+    .legal-section {
+      margin-bottom: 56px; padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .section-label {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 18px;
+    }
+    .legal-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 400; letter-spacing: 0.01em;
+      margin-bottom: 24px; color: var(--text);
+    }
+
+    p { font-size: 15px; color: rgba(232,228,222,0.8); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 14px; color: rgba(232,228,222,0.8);
+    }
+    .check-list li::before {
+      content: '✓'; flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: rgba(141,181,168,0.1);
+      border: 1px solid rgba(141,181,168,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--accent2); margin-top: 1px;
+    }
+
+    .info-grid {
+      display: grid; grid-template-columns: 240px 1fr;
+      gap: 0; border: 1px solid var(--border);
+      border-radius: 2px; overflow: hidden; margin-top: 24px;
+    }
+    .info-grid dt {
+      padding: 14px 20px; font-size: 11px; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      background: rgba(255,255,255,0.025);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+    }
+    .info-grid dd {
+      padding: 14px 20px; font-size: 14px; color: var(--text);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+    }
+    .info-grid dt:last-of-type,
+    .info-grid dd:last-of-type { border-bottom: none; }
+    .info-grid a { color: var(--accent); text-decoration: none; }
+
+    .highlight-box {
+      margin-top: 28px; padding: 24px 28px;
+      background: rgba(200,169,110,0.05);
+      border-left: 2px solid var(--accent);
+      border-radius: 0 2px 2px 0;
+    }
+    .highlight-box p { font-size: 14px; color: rgba(232,228,222,0.7); margin: 0; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; letter-spacing: 0.06em; color: var(--muted);
+    }
+    .footer-right { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+    .footer-links { display: flex; gap: 24px; list-style: none; margin-top: 8px; }
+    .footer-links a {
+      font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 680px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 60px 24px 48px; }
+      .container { padding: 48px 24px 80px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .info-grid dt { border-bottom: none; padding-bottom: 4px; }
+      .commitment-banner { flex-direction: column; }
+      footer { padding: 28px 24px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://www.ariesxconsulting.com/" class="nav-logo">AXC</a>
+    <ul class="nav-links">
+      <li><a href="https://www.ariesxconsulting.com/#about">About</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#expertise">Expertise</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#clients">Clients</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#contact">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <p class="breadcrumb">
+      <a href="https://www.ariesxconsulting.com/">Aries X Consulting</a>
+      <span>›</span>
+      Privacy Policy
+    </p>
+    <h1>Privacy <em>Policy</em></h1>
+    <p class="subtitle">Personal Data Protection — General Data Protection Regulation (GDPR)</p>
+  </div>
+
+  <div class="container">
+
+    <div class="commitment-banner reveal">
+      <div class="commitment-icon">⚬</div>
+      <div>
+        <h3>Our commitment: zero data collection</h3>
+        <p>This is a showcase website. It does not collect, process or store any personal data for commercial, analytical or advertising purposes. Your browsing is entirely private.</p>
+      </div>
+    </div>
+
+    <!-- 1. Data controller -->
+    <div class="legal-section reveal">
+      <p class="section-label">01 — Data Controller</p>
+      <h2>Controller Identity</h2>
+      <dl class="info-grid">
+        <dt>Company</dt>
+        <dd>ARIES X CONSULTING</dd>
+        <dt>Controller</dt>
+        <dd>Mehdi ABDELLAOUI, President</dd>
+        <dt>Address</dt>
+        <dd>62 Rue de la Glacière, 75013 Paris, France</dd>
+        <dt>Contact</dt>
+        <dd><a href="mailto:abdellaoui.mehdi@ariesxconsulting.com">abdellaoui.mehdi@ariesxconsulting.com</a></dd>
+      </dl>
+    </div>
+
+    <!-- 2. Data collected -->
+    <div class="legal-section reveal">
+      <p class="section-label">02 — Data Collected</p>
+      <h2>No Automatic Data Collection</h2>
+      <p>The website <strong>www.ariesxconsulting.com</strong> is a showcase website whose sole purpose is to present the services and professional background of ARIES X CONSULTING.</p>
+      <ul class="check-list">
+        <li>No tracking or audience analytics tools (Google Analytics, Hotjar, Mixpanel, etc.) are installed on this website.</li>
+        <li>No advertising or profiling cookies are placed in your browser.</li>
+        <li>No remarketing pixels (Meta, LinkedIn, Google Ads) are active.</li>
+        <li>Your browsing behaviour is not recorded, analysed or used for any purpose whatsoever.</li>
+        <li>No data is sold or transferred to third parties for commercial purposes.</li>
+      </ul>
+    </div>
+
+    <!-- 3. Contact form -->
+    <div class="legal-section reveal">
+      <p class="section-label">03 — Contact Form</p>
+      <h2>Processing of Contact Data</h2>
+      <p>The website includes a contact form that allows you to send a message to ARIES X CONSULTING. The data you enter (first name, last name, email address, company, message) is used <strong>solely</strong> to respond to your enquiry.</p>
+      <dl class="info-grid">
+        <dt>Purpose</dt>
+        <dd>Responding to your enquiry</dd>
+        <dt>Legal basis</dt>
+        <dd>Legitimate interest / explicit consent</dd>
+        <dt>Retention period</dt>
+        <dd>Duration necessary to process the request</dd>
+        <dt>Data sharing</dt>
+        <dd>No commercial third parties</dd>
+      </dl>
+      <div class="highlight-box">
+        <p>This information is not shared with any commercial partner, subcontractor or third party, and is not subject to any automated processing for prospecting purposes.</p>
+      </div>
+    </div>
+
+    <!-- 4. Cookies -->
+    <div class="legal-section reveal">
+      <p class="section-label">04 — Cookies</p>
+      <h2>Cookie Policy</h2>
+      <p>This website does not use cookies for advertising, analytical or profiling purposes. Only strictly necessary technical cookies required for the proper functioning of the website may be present, in accordance with applicable data protection regulations.</p>
+      <p>You may disable cookies at any time by adjusting your browser settings accordingly.</p>
+    </div>
+
+    <!-- 5. Your rights -->
+    <div class="legal-section reveal">
+      <p class="section-label">05 — Your Rights</p>
+      <h2>GDPR Rights</h2>
+      <p>In accordance with the General Data Protection Regulation (GDPR — EU 2016/679) and applicable national data protection laws, you have the following rights regarding your personal data:</p>
+      <ul class="check-list">
+        <li><strong>Right of access</strong> — obtain a copy of the data held about you.</li>
+        <li><strong>Right of rectification</strong> — have inaccurate information corrected.</li>
+        <li><strong>Right to erasure</strong> — request the deletion of your data.</li>
+        <li><strong>Right to data portability</strong> — receive your data in a structured format.</li>
+        <li><strong>Right to object</strong> — object to any processing of your personal data.</li>
+      </ul>
+      <p style="margin-top: 20px;">To exercise any of these rights, please send your request by email to: <a href="mailto:abdellaoui.mehdi@ariesxconsulting.com" style="color: var(--accent);">abdellaoui.mehdi@ariesxconsulting.com</a></p>
+      <p>You also have the right to lodge a complaint with the relevant supervisory authority. In France, this is the <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés): <a href="https://www.cnil.fr" target="_blank" rel="noopener" style="color: var(--accent);">www.cnil.fr</a>.</p>
+    </div>
+
+    <!-- 6. Updates -->
+    <div class="legal-section reveal">
+      <p class="section-label">06 — Updates</p>
+      <h2>Policy Updates</h2>
+      <p>This privacy policy may be updated to remain compliant with legislative or regulatory changes. The date of the last update will be indicated at the bottom of this page.</p>
+      <dl class="info-grid">
+        <dt>Last updated</dt>
+        <dd>March 2025</dd>
+        <dt>Governing law</dt>
+        <dd>French law — Jurisdiction of Paris</dd>
+      </dl>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-left">AXC — Aries X Consulting</div>
+    <div>
+      <p class="footer-right">© 2025 Aries X Consulting — Paris</p>
+      <ul class="footer-links">
+        <li><a href="https://www.ariesxconsulting.com/">Home</a></li>
+        <li><a href="legal-notice.html">Legal Notice</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
