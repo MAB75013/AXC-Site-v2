@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentions Légales — Aries X Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #111111;
+      --border:   rgba(255,255,255,0.07);
+      --accent:   #c8a96e;
+      --accent2:  #8db5a8;
+      --text:     #e8e4de;
+      --muted:    rgba(232,228,222,0.45);
+      --nav-h:    72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO STRIP ── */
+    .page-hero {
+      margin-top: var(--nav-h);
+      padding: 80px 48px 60px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a { color: var(--accent); text-decoration: none; }
+    .breadcrumb span { margin: 0 8px; opacity: 0.4; }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .page-hero .subtitle {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 72px 48px 120px;
+    }
+
+    /* ── SECTIONS ── */
+    .legal-section {
+      margin-bottom: 60px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    .legal-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .info-grid dt {
+      padding: 14px 20px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255,255,255,0.025);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .info-grid dd {
+      padding: 14px 20px;
+      font-size: 14px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+
+    .info-grid dt:last-of-type,
+    .info-grid dd:last-of-type {
+      border-bottom: none;
+    }
+
+    .info-grid a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .info-grid a:hover { text-decoration: underline; }
+
+    p {
+      font-size: 15px;
+      color: rgba(232,228,222,0.8);
+      margin-bottom: 16px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    .highlight-box {
+      margin-top: 28px;
+      padding: 24px 28px;
+      background: rgba(141,181,168,0.06);
+      border-left: 2px solid var(--accent2);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .highlight-box p {
+      font-size: 14px;
+      color: rgba(232,228,222,0.7);
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-left {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .footer-right {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 60px 24px 48px; }
+      .container { padding: 48px 24px 80px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .info-grid dt { border-bottom: none; padding-bottom: 4px; }
+      footer { padding: 28px 24px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://www.ariesxconsulting.com/" class="nav-logo">AXC</a>
+    <ul class="nav-links">
+      <li><a href="https://www.ariesxconsulting.com/#about">About</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#expertise">Expertise</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#clients">Clients</a></li>
+      <li><a href="https://www.ariesxconsulting.com/#contact">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="breadcrumb">
+      <a href="https://www.ariesxconsulting.com/">Aries X Consulting</a>
+      <span>›</span>
+      Mentions légales
+    </p>
+    <h1>Mentions <em>légales</em></h1>
+    <p class="subtitle">Conformément aux articles 6-III et 19 de la Loi n°2004-575 du 21 juin 2004 pour la Confiance dans l'Économie Numérique (LCEN)</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+
+    <!-- 1. Éditeur -->
+    <div class="legal-section reveal">
+      <p class="section-label">01 — Éditeur du site</p>
+      <h2>Identité de la société</h2>
+      <dl class="info-grid">
+        <dt>Raison sociale</dt>
+        <dd>ARIES X CONSULTING</dd>
+
+        <dt>Forme juridique</dt>
+        <dd>Société par Actions Simplifiée (SAS)</dd>
+
+        <dt>Capital social</dt>
+        <dd>1 000 €</dd>
+
+        <dt>SIREN</dt>
+        <dd>933 838 120</dd>
+
+        <dt>SIRET (siège)</dt>
+        <dd>933 838 120 00014</dd>
+
+        <dt>N° TVA intracommunautaire</dt>
+        <dd>FR45933838120</dd>
+
+        <dt>Code APE / NAF</dt>
+        <dd>7022Z — Conseil pour les affaires et autres conseils de gestion</dd>
+
+        <dt>Date de création</dt>
+        <dd>09 octobre 2024</dd>
+
+        <dt>Siège social</dt>
+        <dd>62 Rue de la Glacière, 75013 Paris, France</dd>
+
+        <dt>Directeur de publication</dt>
+        <dd>Mehdi ABDELLAOUI — Président</dd>
+
+        <dt>Contact</dt>
+        <dd><a href="mailto:abdellaoui.mehdi@ariesxconsulting.com">abdellaoui.mehdi@ariesxconsulting.com</a></dd>
+      </dl>
+    </div>
+
+    <!-- 2. Hébergement -->
+    <div class="legal-section reveal">
+      <p class="section-label">02 — Hébergement</p>
+      <h2>Hébergeur du site</h2>
+      <p>Le site <strong>www.ariesxconsulting.com</strong> est hébergé par un prestataire tiers. Pour toute question relative à l'hébergement, veuillez contacter l'éditeur à l'adresse indiquée ci-dessus.</p>
+    </div>
+
+    <!-- 3. Propriété intellectuelle -->
+    <div class="legal-section reveal">
+      <p class="section-label">03 — Propriété intellectuelle</p>
+      <h2>Droits et contenus</h2>
+      <p>L'ensemble des contenus présents sur ce site (textes, visuels, logos, études de cas, articles) est la propriété exclusive d'ARIES X CONSULTING ou de ses auteurs, et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+      <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable d'ARIES X CONSULTING.</p>
+      <div class="highlight-box">
+        <p>Toute exploitation non autorisée du site ou de l'un quelconque des éléments qu'il contient sera considérée comme constitutive d'une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 et suivants du Code de Propriété Intellectuelle.</p>
+      </div>
+    </div>
+
+    <!-- 4. Responsabilité -->
+    <div class="legal-section reveal">
+      <p class="section-label">04 — Responsabilité</p>
+      <h2>Limitation de responsabilité</h2>
+      <p>ARIES X CONSULTING s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées sur ce site. Toutefois, ARIES X CONSULTING ne peut garantir l'exactitude, la précision ou l'exhaustivité des informations mises à disposition sur le site.</p>
+      <p>En conséquence, ARIES X CONSULTING décline toute responsabilité pour toute imprécision, inexactitude ou omission portant sur des informations disponibles sur ce site, ainsi que pour tous dommages résultant d'une intrusion frauduleuse d'un tiers ayant entraîné une modification des informations mises à disposition sur le site.</p>
+    </div>
+
+    <!-- 5. Liens hypertextes -->
+    <div class="legal-section reveal">
+      <p class="section-label">05 — Liens hypertextes</p>
+      <h2>Liens externes</h2>
+      <p>Le site <strong>www.ariesxconsulting.com</strong> peut contenir des liens vers d'autres sites internet. ARIES X CONSULTING n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu. La présence de ces liens ne saurait engager la responsabilité d'ARIES X CONSULTING.</p>
+    </div>
+
+    <!-- 6. Droit applicable -->
+    <div class="legal-section reveal">
+      <p class="section-label">06 — Droit applicable & litiges</p>
+      <h2>Juridiction compétente</h2>
+      <p>Les présentes mentions légales sont régies par le droit français. En cas de litige relatif à l'utilisation du site, les tribunaux de <strong>Paris</strong> seront seuls compétents.</p>
+      <dl class="info-grid" style="margin-top: 24px;">
+        <dt>Tribunal compétent</dt>
+        <dd>Tribunal de commerce de Paris</dd>
+        <dt>Droit applicable</dt>
+        <dd>Droit français</dd>
+      </dl>
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">AXC — Aries X Consulting</div>
+    <div>
+      <p class="footer-right">© 2025 Aries X Consulting — Paris</p>
+      <ul class="footer-links">
+        <li><a href="https://www.ariesxconsulting.com/">Accueil</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="politique-confidentialite.html">Données personnelles</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
