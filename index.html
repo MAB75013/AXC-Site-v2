@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aries X Consulting — AXC</title>
- 
+
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
- 
+
 <style>
 /* ── RESET & BASE ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -19,7 +19,7 @@ body{
   line-height:1.7;
   overflow-x:hidden;
 }
- 
+
 /* reCAPTCHA HTML5 fix */
 #g-recaptcha-response{
   display:block !important;
@@ -28,7 +28,7 @@ body{
   z-index:-999999;
   opacity:0;
 }
- 
+
 /* ── INSIGHTS IMAGES ── */
 .ins-img img{
   width:100%;
@@ -37,43 +37,43 @@ body{
   display:block;
   transition:transform .4s ease;
 }
- 
+
 /* ── CARD LINK RESET ── */
 .ins-card{
   text-decoration:none;
   color:inherit;
 }
- 
+
 /* ── TITLE STYLE ── */
 .ins-title{
   color:var(--white);
   transition:color .3s;
 }
- 
+
 /* ── DESCRIPTION STYLE ── */
 .ins-desc{
   transition:color .3s;
 }
- 
+
 /* ── HOVER EFFECT (PREMIUM) ── */
 .ins-card:hover img{
   transform:scale(1.05);
 }
- 
+
 .ins-card:hover .ins-title{
   color:var(--gold-light);
 }
- 
+
 .ins-card:hover .ins-desc{
   color:var(--white);
 }
- 
+
 /* ── FIX DEFAULT LINK COLORS ── */
 .ins-card:visited,
 .ins-card:active{
   color:inherit;
 }
- 
+
 /* ── VARIABLES ── */
 :root{
   --black:#080808;
@@ -88,7 +88,7 @@ body{
   --accent-blue:#3A7BD5;
   --accent-green:#2E7D52;
 }
- 
+
 /* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -122,7 +122,7 @@ nav{
   transition:all .3s!important;
 }
 .nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
- 
+
 /* ── HERO ── */
 #hero{
   min-height:100vh;
@@ -140,27 +140,27 @@ nav{
   background-size:60px 60px;
 }
 .hero-content{position:relative;max-width:1200px;width:100%}
- 
+
 .hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
 .hero-eyebrow .line{width:40px;height:1px;background:var(--gold)}
 .hero-eyebrow span{
   font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
   color:var(--gold);font-family:'Helvetica Neue',Arial,sans-serif;
 }
- 
+
 .hero-title{
   font-size:clamp(3rem,7vw,6.5rem);
   font-weight:400;line-height:1.05;margin-bottom:1.5rem;
   max-width:800px;
 }
 .hero-title em{font-style:italic;color:var(--gold-light)}
- 
+
 .hero-sub{
   font-size:1rem;color:var(--muted);
   max-width:520px;margin-bottom:3rem;line-height:1.85;
   font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
 }
- 
+
 .hero-actions{display:flex;gap:1.5rem;flex-wrap:wrap}
 .btn-primary{
   padding:1rem 2.5rem;background:var(--gold);color:var(--black);
@@ -176,7 +176,7 @@ nav{
   transition:all .3s;display:inline-block;
 }
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
- 
+
 .hero-stats{
   display:flex;gap:4rem;margin-top:5rem;padding-top:3rem;
   border-top:1px solid var(--border);flex-wrap:wrap;
@@ -189,11 +189,11 @@ nav{
   color:var(--muted);margin-top:.3rem;
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
- 
+
 /* ── SECTION BASE ── */
 section{padding:7rem 4rem}
 .section-inner{max-width:1200px;margin:0 auto}
- 
+
 .s-eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
 .s-eyebrow .line{width:28px;height:1px;background:var(--gold)}
 .s-eyebrow span{
@@ -207,20 +207,20 @@ section{padding:7rem 4rem}
   color:var(--muted);max-width:540px;margin-top:.9rem;
   font-size:.93rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
 }
- 
+
 /* ── ABOUT ── */
 #about{background:var(--deep)}
- 
+
 .about-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;
 }
- 
+
 .about-frame{
   width:100%;aspect-ratio:3/4;background:var(--card);
   border:1px solid var(--border);overflow:hidden;position:relative;
 }
 .about-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
- 
+
 .about-badge{
   position:absolute;bottom:-1.2rem;right:-1.2rem;
   background:var(--gold);color:var(--black);
@@ -231,13 +231,13 @@ section{padding:7rem 4rem}
   font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;margin-top:.3rem;
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
- 
+
 .about-body p{
   color:var(--muted);font-size:.93rem;line-height:1.95;margin-bottom:1.4rem;
   font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
 }
 .about-body strong{color:var(--white);font-weight:500}
- 
+
 .mission-quote{
   margin-top:1.8rem;padding:1.4rem;
   border-left:2px solid var(--gold);background:var(--gold-dim);
@@ -245,7 +245,7 @@ section{padding:7rem 4rem}
 .mission-quote p{
   font-size:1rem;font-style:italic;color:var(--white);line-height:1.7;margin:0;
 }
- 
+
 .about-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
 .tag{
   padding:.3rem .9rem;border:1px solid var(--border);
@@ -254,10 +254,10 @@ section{padding:7rem 4rem}
   transition:all .3s;cursor:default;
 }
 .tag:hover{border-color:var(--gold);color:var(--gold)}
- 
+
 /* ── EXPERTISE ── */
 #expertise{background:var(--black)}
- 
+
 .exp-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:var(--border);margin-top:3.5rem;
@@ -275,25 +275,25 @@ section{padding:7rem 4rem}
 .c3::before{background:linear-gradient(90deg,var(--accent-green),#5ab87a)}
 .exp-card:hover{background:var(--card)}
 .exp-card:hover::before{transform:scaleX(1)}
- 
+
 .exp-num{
   font-size:5rem;font-weight:400;color:var(--border);
   position:absolute;top:1rem;right:1.5rem;line-height:1;
 }
- 
+
 .exp-icon{
   width:46px;height:46px;border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1.8rem;font-size:1.3rem;
 }
- 
+
 .exp-title{font-size:1.5rem;font-weight:400;margin-bottom:.7rem}
- 
+
 .exp-desc{
   color:var(--muted);font-size:.82rem;line-height:1.85;margin-bottom:1.8rem;
   font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
 }
- 
+
 .exp-list{list-style:none}
 .exp-list li{
   font-size:.8rem;color:var(--muted);
@@ -308,10 +308,10 @@ section{padding:7rem 4rem}
 .c1 .exp-list li::before{color:var(--gold)}
 .c2 .exp-list li::before{color:var(--accent-blue)}
 .c3 .exp-list li::before{color:var(--accent-green)}
- 
+
 /* ── CLIENTS ── */
 #clients{background:var(--deep)}
- 
+
 .clients-top{
   display:flex;justify-content:space-between;align-items:flex-end;
   margin-bottom:3rem;flex-wrap:wrap;gap:2rem;
@@ -323,9 +323,9 @@ section{padding:7rem 4rem}
   font-style:normal;font-size:2.2rem;color:var(--gold);
   display:block;line-height:1;font-weight:400;
 }
- 
+
 .clients-grid{
-  display:grid;grid-template-columns:repeat(7,1fr);
+  display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:var(--border);
 }
 .client-cell{
@@ -341,10 +341,10 @@ section{padding:7rem 4rem}
   transition:color .3s;line-height:1.4;
 }
 .client-cell:hover .client-name{color:var(--white)}
- 
+
 /* ── REX ── */
 #rex{background:var(--black)}
- 
+
 .rex-tip{
   display:flex;align-items:center;gap:.8rem;
   background:var(--gold-dim);border:1px solid rgba(201,168,76,0.2);
@@ -352,17 +352,17 @@ section{padding:7rem 4rem}
   font-size:.75rem;color:var(--gold);letter-spacing:.07em;
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
- 
+
 .rex-card{border:1px solid var(--border);margin-bottom:2px;overflow:hidden;transition:border-color .3s}
 .rex-card:hover{border-color:rgba(255,255,255,.12)}
 .rex-card.open{border-color:rgba(201,168,76,0.25)}
- 
+
 .rex-head{
   padding:2rem 2.2rem;display:flex;align-items:flex-start;justify-content:space-between;
   cursor:pointer;background:var(--deep);transition:background .3s;
 }
 .rex-head:hover{background:var(--card)}
- 
+
 .rex-domain{
   display:inline-block;padding:.22rem .7rem;margin-bottom:.7rem;
   font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
@@ -371,7 +371,7 @@ section{padding:7rem 4rem}
 .d-biz{color:var(--gold);border-color:rgba(201,168,76,0.3);background:var(--gold-dim)}
 .d-dig{color:var(--gold);border-color:rgba(201,168,76,0.3);background:var(--gold-dim)}
 .d-sus{color:#6dc98a;border-color:rgba(46,125,82,0.3);background:rgba(46,125,82,0.1)}
- 
+
 .rex-title{font-size:1.35rem;font-weight:400}
 .rex-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:.7rem}
 .rex-meta span{
@@ -380,7 +380,7 @@ section{padding:7rem 4rem}
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
 .rex-meta span::before{content:'◆';color:var(--gold);font-size:.44rem}
- 
+
 .rex-tog{
   width:30px;height:30px;border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
@@ -388,19 +388,19 @@ section{padding:7rem 4rem}
   transition:all .3s;font-style:normal;
 }
 .rex-card.open .rex-tog{transform:rotate(45deg);color:var(--gold);border-color:var(--gold)}
- 
+
 .rex-body{display:none;padding:2.2rem;background:#0f1a12;border-top:1px solid var(--border)}
 .rex-card.open .rex-body{display:block}
- 
+
 .rex-body-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
- 
+
 .rex-lbl{
   font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
   color:var(--gold);margin-bottom:.7rem;
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
 .rex-txt{font-size:.84rem;color:var(--muted);line-height:1.85;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300}
- 
+
 .rex-ul{list-style:none}
 .rex-ul li{
   font-size:.82rem;color:var(--muted);padding:.38rem 0;
@@ -408,7 +408,7 @@ section{padding:7rem 4rem}
   font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300;
 }
 .rex-ul li::before{content:'◆';color:var(--gold);font-size:.42rem;margin-top:.5rem;flex-shrink:0}
- 
+
 .rex-kpis{
   display:flex;gap:3rem;flex-wrap:wrap;
   margin-top:1.8rem;padding:1.5rem;
@@ -420,10 +420,10 @@ section{padding:7rem 4rem}
   color:var(--muted);margin-top:.25rem;
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
- 
+
 /* ── TESTIMONIALS ── */
 #testimonials{background:var(--deep)}
- 
+
 .testi-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:1px;background:var(--border);margin-top:3.5rem;
@@ -454,10 +454,10 @@ section{padding:7rem 4rem}
 .t-author{margin-top:auto;padding-top:1.3rem;border-top:1px solid var(--border);}
 .t-name{font-size:.85rem;font-weight:500;font-family:'Helvetica Neue',Arial,sans-serif}
 .t-role{font-size:.72rem;color:var(--muted);margin-top:.15rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300}
- 
+
 /* ── INSIGHTS ── */
 #insights{background:var(--black)}
- 
+
 .insights-top{
   display:flex;justify-content:space-between;align-items:flex-end;
   flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;
@@ -486,12 +486,12 @@ section{padding:7rem 4rem}
 .ins-foot{padding:.8rem 1.8rem 1.5rem;display:flex;justify-content:space-between;align-items:center}
 .ins-date{font-size:.68rem;color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif}
 .ins-arr{color:var(--gold);font-size:.9rem}
- 
+
 /* ── CONTACT ── */
 #contact{background:var(--deep)}
- 
+
 .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
- 
+
 .c-info{margin-top:2.5rem}
 .c-item{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem 0;border-bottom:1px solid var(--border)}
 .c-icon{
@@ -503,7 +503,7 @@ section{padding:7rem 4rem}
 .c-val{font-size:.87rem;margin-top:.15rem;font-family:'Helvetica Neue',Arial,sans-serif}
 .c-val a{color:var(--gold);text-decoration:none}
 .c-val a:hover{color:var(--gold-light)}
- 
+
 .social-row{display:flex;gap:.7rem;margin-top:2rem}
 .social-pill{
   padding:.38rem 1rem;border:1px solid var(--border);
@@ -512,7 +512,7 @@ section{padding:7rem 4rem}
   transition:all .3s;font-family:'Helvetica Neue',Arial,sans-serif;
 }
 .social-pill:hover{border-color:var(--gold);color:var(--gold)}
- 
+
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
 .form-g{margin-bottom:.9rem}
 .form-lbl{
@@ -535,7 +535,7 @@ section{padding:7rem 4rem}
   font-family:'Helvetica Neue',Arial,sans-serif;
 }
 .chip.on{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
- 
+
 .form-submit{
   width:100%;padding:1.05rem;background:var(--gold);color:var(--black);
   border:none;cursor:pointer;
@@ -545,7 +545,7 @@ section{padding:7rem 4rem}
 }
 .form-submit:hover{background:var(--gold-light);transform:translateY(-1px)}
 .form-submit:disabled{background:var(--accent-green);color:#fff;cursor:default;transform:none}
- 
+
 /* ── FOOTER ── */
 footer{
   background:var(--black);border-top:1px solid var(--border);
@@ -564,7 +564,7 @@ footer{
 }
 .footer-links a:hover{color:var(--white)}
 .footer-copy{font-size:.66rem;color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif}
- 
+
 /* ── FOOTER BOTTOM BAR (legal) ── */
 .footer-bottom{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
@@ -581,12 +581,12 @@ footer{
 .footer-legal-sep{
   color:var(--border);font-size:.62rem;
 }
- 
+
 /* ── FADE UP ── */
 .fu{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
 .fu.vis{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
- 
+
 /* ── MOBILE ── */
 @media(max-width:900px){
   nav{padding:1rem 1.5rem}
@@ -595,7 +595,7 @@ footer{
   #hero{padding:7rem 1.5rem 3.5rem}
   .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem}
   .exp-grid,.testi-grid{grid-template-columns:1fr}
-  .clients-grid{grid-template-columns:repeat(3,1fr)}
+  .clients-grid{grid-template-columns:repeat(2,1fr)}
   .rex-body-grid{grid-template-columns:1fr}
   .insights-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
@@ -607,7 +607,7 @@ footer{
 </style>
 </head>
 <body>
- 
+
 <!-- ══ NAV ══ -->
 <nav>
   <a href="#hero" class="nav-logo">
@@ -623,7 +623,7 @@ footer{
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
 </nav>
- 
+
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-grid"></div>
@@ -651,7 +651,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ ABOUT ══ -->
 <section id="about">
   <div class="section-inner">
@@ -665,21 +665,21 @@ footer{
           <div class="bl">Years<br>Experience</div>
         </div>
       </div>
- 
+
       <div class="about-body fu d1">
         <div class="s-eyebrow"><div class="line"></div><span>About Mehdi Abdellaoui</span></div>
         <h2 class="s-title">Where strategy<br>meets execution</h2>
- 
+
         <div style="margin-top:1.5rem">
           <p><strong>Aries X Consulting (AXC)</strong> is an independent management consulting firm founded by Mehdi Abdellaoui — a consultant with over 12 years of experience transforming complex organisations across Europe.</p>
           <p>We led <strong>digital transformation programs</strong>, driven <strong>measurable cost reduction</strong>, and built <strong>Net-Zero roadmaps</strong> for some of the world's most demanding organisations — including Retail & Luxury, Automotive, and other global industrial & services groups.</p>
           <p>AXC combines rigorous analytical frameworks with hands-on implementation — bridging the gap between strategy and operational reality.</p>
         </div>
- 
+
         <div class="mission-quote">
           <p>"Our mission is to transform today's challenges into tomorrow's successes — together."</p>
         </div>
- 
+
         <div class="about-tags">
           <span class="tag">Retail & Luxury</span>
           <span class="tag">Automotive</span>
@@ -693,14 +693,14 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ EXPERTISE ══ -->
 <section id="expertise">
   <div class="section-inner">
     <div class="s-eyebrow fu"><div class="line"></div><span>Three Domains of Expertise</span></div>
     <h2 class="s-title fu d1">What AXC does best</h2>
     <p class="s-desc fu d2">From operational efficiency to digital platforms and carbon strategy — integrated expertise for the challenges that matter most.</p>
- 
+
     <div class="exp-grid">
       <div class="exp-card c1 fu">
         <div class="exp-num">01</div>
@@ -716,7 +716,7 @@ footer{
           <li>KPI Frameworks & Performance Management</li>
         </ul>
       </div>
- 
+
       <div class="exp-card c2 fu d1">
         <div class="exp-num">02</div>
         <div class="exp-icon">◈</div>
@@ -731,7 +731,7 @@ footer{
           <li>Agile / PSPO Delivery</li>
         </ul>
       </div>
- 
+
       <div class="exp-card c3 fu d2">
         <div class="exp-num">03</div>
         <div class="exp-icon">◈</div>
@@ -749,7 +749,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ CLIENTS ══ -->
 <section id="clients">
   <div class="section-inner">
@@ -763,7 +763,7 @@ footer{
         brands & organisations
       </div>
     </div>
- 
+
     <div class="clients-grid fu">
       <div class="client-cell"><div class="client-name">Accenture</div></div>
       <div class="client-cell"><div class="client-name">Adéo</div></div>
@@ -803,14 +803,14 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ REX ══ -->
 <section id="rex">
   <div class="section-inner">
     <div class="s-eyebrow fu"><div class="line"></div><span>Mission Case Studies</span></div>
     <h2 class="s-title fu d1">Case Studies</h2>
     <p class="s-desc fu d2">Context, approach, deliverables and measurable impact. Click to expand.</p>
- 
+
     <!-- REX 1 — Kering -->
     <div class="rex-card fu">
       <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
@@ -863,7 +863,7 @@ footer{
         </div>
       </div>
     </div>
- 
+
     <!-- REX 2 — Arval -->
     <div class="rex-card fu">
       <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
@@ -915,7 +915,7 @@ footer{
         </div>
       </div>
     </div>
- 
+
     <!-- REX 3 — AKKA -->
     <div class="rex-card fu">
       <div class="rex-head" onclick="this.closest('.rex-card').classList.toggle('open')">
@@ -930,7 +930,7 @@ footer{
         </div>
         <div class="rex-tog">+</div>
       </div>
- 
+
       <div class="rex-body">
         <div class="rex-body-grid">
           <div>
@@ -940,7 +940,7 @@ footer{
               The group launched a large-scale transformation program across strategic management, cost structure, and topline growth, involving 15+ consultants.
             </p>
           </div>
- 
+
           <div>
             <div class="rex-lbl">Approach & Methodology</div>
             <p class="rex-txt">
@@ -948,7 +948,7 @@ footer{
               Structured transformation streams, implemented performance monitoring mechanisms, and ensured alignment between leadership priorities and operational execution.
             </p>
           </div>
- 
+
           <div>
             <div class="rex-lbl">Key Deliverables</div>
             <ul class="rex-ul">
@@ -959,7 +959,7 @@ footer{
               <li>Executive reporting and decision support</li>
             </ul>
           </div>
- 
+
           <div>
             <div class="rex-lbl">Tools & Frameworks</div>
             <ul class="rex-ul">
@@ -970,7 +970,7 @@ footer{
             </ul>
           </div>
         </div>
- 
+
         <div class="rex-kpis">
           <div class="kpi"><div class="kv">€50M</div><div class="kl">Savings Identified</div></div>
           <div class="kpi"><div class="kv">18</div><div class="kl">Months program</div></div>
@@ -980,13 +980,13 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ TESTIMONIALS ══ -->
 <section id="testimonials">
   <div class="section-inner">
     <div class="s-eyebrow fu"><div class="line"></div><span>Client Testimonials</span></div>
     <h2 class="s-title fu d1">What clients say</h2>
- 
+
     <div class="testi-grid">
       <div class="testi-card fu">
         <div class="t-quote">"</div>
@@ -1018,7 +1018,7 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ INSIGHTS ══ -->
 <section id="insights">
   <div class="section-inner">
@@ -1044,7 +1044,7 @@ footer{
         </div>
         <div class="ins-foot"><span class="ins-date">March 2026</span><span class="ins-arr">↗</span></div>
       </a>
- 
+
       <!-- ── SMALL CARD 1 (EUDR) ── -->
       <a href="https://medium.com/@abdellaoui.mehdi/eudr-the-regulation-reshaping-global-supply-chains-0b310692cd8c" target="_blank" class="ins-card">
         <div class="ins-img sm">
@@ -1059,7 +1059,7 @@ footer{
         </div>
         <div class="ins-foot"><span class="ins-date">2025</span><span class="ins-arr">↗</span></div>
       </a>
- 
+
       <!-- ── SMALL CARD 2 (AI) ── -->
       <a href="https://medium.com/@abdellaoui.mehdi/luxury-after-algorithms-is-ai-changing-the-soul-of-fashion-062cb22624c2" target="_blank" class="ins-card">
         <div class="ins-img sm">
@@ -1077,12 +1077,12 @@ footer{
     </div>
   </div>
 </section>
- 
+
 <!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="section-inner">
     <div class="contact-grid">
- 
+
       <!-- LEFT SIDE -->
       <div class="fu">
         <div class="s-eyebrow"><div class="line"></div><span>Get In Touch</span></div>
@@ -1090,7 +1090,18 @@ footer{
         <p style="color:var(--muted);margin-top:1rem;font-size:.92rem;line-height:1.9;max-width:370px;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:300">
           Whether you have a specific project or are exploring how AXC can support your transformation — I'm happy to have a first conversation.
         </p>
-             
+
+        <div class="c-info">
+          <div class="c-item">
+            <div class="c-icon">✉</div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-val">
+                <a href="/cdn-cgi/l/email-protection#bbdad9dfded7d7dad4ced295d6ded3dfd2fbdac9d2dec8c3d8d4d5c8ced7cfd2d5dc95d8d4d6"><span class="__cf_email__" data-cfemail="b1d0d3d5d4ddddd0dec4d89fdcd4d9d5d8f1d0c3d8d4c2c9d2dedfc2c4ddc5d8dfd69fd2dedc">[email&#160;protected]</span></a>
+              </div>
+            </div>
+          </div>
+
           <div class="c-item">
             <div class="c-icon">⌖</div>
             <div>
@@ -1099,48 +1110,48 @@ footer{
             </div>
           </div>
         </div>
- 
+
         <div class="social-row">
           <a href="https://www.linkedin.com/in/mehdi-abdellaoui-a4272a44/" target="_blank" class="social-pill">LinkedIn</a>
           <a href="https://medium.com/@abdellaoui.mehdi" target="_blank" class="social-pill">Medium</a>
           <a href="/cdn-cgi/l/email-protection#88e9eaecede4e4e9e7fde1a6e5ede0ece1c8e9fae1edfbf0ebe7e6fbfde4fce1e6efa6ebe7e5" class="social-pill">Email</a>
         </div>
       </div>
- 
+
       <!-- RIGHT SIDE (FORMSPREE FORM + CAPTCHA) -->
       <div class="fu d1">
- 
+
         <form action="https://formspree.io/f/mpqyvggj" method="POST">
           <!-- Hidden fields -->
           <input type="hidden" name="_subject" value="New AXC Contact Request">
           <input type="text" name="_gotcha" style="display:none">
- 
+
           <!-- NAME -->
           <div class="form-row">
             <div class="form-g">
               <label class="form-lbl">First Name</label>
               <input type="text" name="first_name" class="form-input" placeholder="Jean" required>
             </div>
- 
+
             <div class="form-g">
               <label class="form-lbl">Last Name</label>
               <input type="text" name="last_name" class="form-input" placeholder="Dupont" required>
             </div>
           </div>
- 
+
           <!-- CONTACT -->
           <div class="form-row">
             <div class="form-g">
               <label class="form-lbl">Email</label>
               <input type="email" name="email" class="form-input" placeholder="jean@company.com" required>
             </div>
- 
+
             <div class="form-g">
               <label class="form-lbl">Company</label>
               <input type="text" name="company" class="form-input" placeholder="Your Company">
             </div>
           </div>
- 
+
           <!-- PROJECT TYPE -->
           <div class="form-g">
             <label class="form-lbl">Project type</label>
@@ -1155,29 +1166,29 @@ footer{
               <option>Other</option>
             </select>
           </div>
- 
+
           <!-- MESSAGE -->
           <div class="form-g">
             <label class="form-lbl">Your message</label>
             <textarea name="message" class="form-ta" placeholder="Tell me about your project, timeline and objectives..." required></textarea>
           </div>
- 
+
           <!-- CAPTCHA -->
           <div class="form-g">
             <div class="g-recaptcha" data-sitekey="6Le68ZgsAAAAAOBdCCYFqJrVZ9_yFPNmhjiZHw4q"></div>
           </div>
- 
+
           <!-- SUBMIT -->
           <button type="submit" class="form-submit">
             Send Message →
           </button>
         </form>
- 
+
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- ══ FOOTER ══ -->
 <footer>
   <!-- Top row : logo · nav + legal · copyright -->
@@ -1196,7 +1207,13 @@ footer{
     </div>
     <div class="footer-copy">© 2025 Aries X Consulting — Paris</div>
   </div>
-  
+
+  <!-- Bottom row : SIREN -->
+  <div class="footer-bottom">
+    <div class="footer-copy">SIREN 933 838 120 — Paris, France</div>
+  </div>
+</footer>
+
 <script>
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -1205,13 +1222,13 @@ const io = new IntersectionObserver(entries => {
 },{threshold:0.1});
 document.querySelectorAll('.fu').forEach(el => io.observe(el));
 </script>
- 
+
 <script>
 window.onload = function () {
   var el = document.getElementById('g-recaptcha-response');
   if (el) { el.setAttribute('required', 'required'); }
 };
 </script>
- 
+
 </body>
 </html>
