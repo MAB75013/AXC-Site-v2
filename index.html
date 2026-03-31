@@ -308,6 +308,23 @@ section{padding:7rem 4rem}
 .c1 .exp-list li::before{color:var(--gold)}
 .c2 .exp-list li::before{color:var(--accent-blue)}
 .c3 .exp-list li::before{color:var(--accent-green)}
+
+ .service-highlight {
+  background: rgba(201,168,76,0.07);
+  border-top: 1px solid rgba(201,168,76,0.2);
+  margin: 0 -16px;
+  padding: 13px 16px;
+}
+.badge-new {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  background: #C9A84C; color: #0D0D0D; padding: 2px 7px;
+  border-radius: 2px; font-weight: bold;
+}
+.cta-brief {
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #C9A84C; border: 1px solid rgba(201,168,76,0.4);
+  padding: 4px 10px; border-radius: 3px; text-decoration: none;
+}
  
 /* ── CLIENTS ── */
 #clients{background:var(--deep)}
@@ -740,6 +757,12 @@ footer{
           <li>UX/UI Design & Product Management</li>
           <li>Offshore & Cross-Functional Team Mgmt</li>
           <li>Agile / PSPO Delivery</li>
+         <li class="service-item service-highlight">
+           <span class="arrow">→</span>
+           <span class="label">Web Design &amp; Site Creation</span>
+           <span class="badge-new">New</span>
+           <a href="#brief-client" class="cta-brief">Brief →</a>
+         </li>
         </ul>
       </div>
  
@@ -774,49 +797,48 @@ footer{
         brands & organisations
       </div>
     </div>
- 
-    <div class="clients-grid fu">
-      <div class="client-cell"><div class="client-name">Accenture</div></div>
-      <div class="client-cell"><div class="client-name">Adéo</div></div>
-      <div class="client-cell"><div class="client-name">Air Liquide</div></div>
-      <div class="client-cell"><div class="client-name">Airbus Aviation</div></div>
-      <div class="client-cell"><div class="client-name">Airbus Helicopter</div></div>
-      <div class="client-cell"><div class="client-name">AKKA Consulting</div></div>
-      <div class="client-cell"><div class="client-name">ArcelorMittal</div></div>
-      <div class="client-cell"><div class="client-name">Arval</div></div>
-      <div class="client-cell"><div class="client-name">Auchan</div></div>
-      <div class="client-cell"><div class="client-name">Carrefour</div></div>
-      <div class="client-cell"><div class="client-name">CEVA</div></div>
-      <div class="client-cell"><div class="client-name">CMA-CGM</div></div>
-      <div class="client-cell"><div class="client-name">Dior Couture</div></div>
-      <div class="client-cell"><div class="client-name">FCA</div></div>
-      <div class="client-cell"><div class="client-name">Galeries Lafayette</div></div>
-      <div class="client-cell"><div class="client-name">Gilson</div></div>
-      <div class="client-cell"><div class="client-name">Groupe Pochet</div></div>
-      <div class="client-cell"><div class="client-name">Groupe Renault</div></div>
-      <div class="client-cell"><div class="client-name">Honda</div></div>
-      <div class="client-cell"><div class="client-name">Jaguar Land Rover</div></div>
-      <div class="client-cell"><div class="client-name">Kering</div></div>
-      <div class="client-cell"><div class="client-name">Lacoste</div></div>
-      <div class="client-cell"><div class="client-name">LVMH</div></div>
-      <div class="client-cell"><div class="client-name">Mars Petcare</div></div>
-      <div class="client-cell"><div class="client-name">Michelin</div></div>
-      <div class="client-cell"><div class="client-name">Ministère de l'Intérieur</div></div>
-      <div class="client-cell"><div class="client-name">Peugeot</div></div>
-      <a href="https://www.recyclerie-solidaire.fr" target="_blank" class="client-cell">
-     <div class="client-name">Recyclerie Solidaire</div>
-     </a>
-      <div class="client-cell"><div class="client-name">Renault</div></div>
-      <div class="client-cell"><div class="client-name">Servier</div></div>
-      <div class="client-cell"><div class="client-name">SMS Concast AG</div></div>
-     <a href="https://www.smokey-paris.com/" target="_blank" class="client-cell">
-      <div class="client-name">Smokey</div>
-     </a>
-      <div class="client-cell"><div class="client-name">Stellantis</div></div>
-      <div class="client-cell"><div class="client-name">TNP Consultant</div></div>
-      <div class="client-cell"><div class="client-name">Vinci Holding</div></div>
-      <div class="client-cell"><div class="client-name">Yamaha</div></div>
-    </div>
+        <div class="clients-grid fu">
+          <div class="client-cell"><div class="client-name">Accenture</div></div>
+          <div class="client-cell"><div class="client-name">Adéo</div></div>
+          <div class="client-cell"><div class="client-name">Air Liquide</div></div>
+          <div class="client-cell"><div class="client-name">Airbus Aviation</div></div>
+          <div class="client-cell"><div class="client-name">Airbus Helicopter</div></div>
+          <div class="client-cell"><div class="client-name">AKKA Consulting</div></div>
+          <div class="client-cell"><div class="client-name">ArcelorMittal</div></div>
+          <div class="client-cell"><div class="client-name">Arval</div></div>
+          <div class="client-cell"><div class="client-name">Auchan</div></div>
+          <div class="client-cell"><div class="client-name">Carrefour</div></div>
+          <div class="client-cell"><div class="client-name">CEVA</div></div>
+          <div class="client-cell"><div class="client-name">CMA-CGM</div></div>
+          <div class="client-cell"><div class="client-name">Dior Couture</div></div>
+          <div class="client-cell"><div class="client-name">FCA</div></div>
+          <div class="client-cell"><div class="client-name">Galeries Lafayette</div></div>
+          <div class="client-cell"><div class="client-name">Gilson</div></div>
+          <div class="client-cell"><div class="client-name">Groupe Pochet</div></div>
+          <div class="client-cell"><div class="client-name">Groupe Renault</div></div>
+          <div class="client-cell"><div class="client-name">Honda</div></div>
+          <div class="client-cell"><div class="client-name">Jaguar Land Rover</div></div>
+          <div class="client-cell"><div class="client-name">Kering</div></div>
+          <div class="client-cell"><div class="client-name">Lacoste</div></div>
+          <div class="client-cell"><div class="client-name">LVMH</div></div>
+          <div class="client-cell"><div class="client-name">Mars Petcare</div></div>
+          <div class="client-cell"><div class="client-name">Michelin</div></div>
+          <div class="client-cell"><div class="client-name">Ministère de l'Intérieur</div></div>
+          <div class="client-cell"><div class="client-name">Peugeot</div></div>
+            <a href="https://www.recyclerie-solidaire.fr" target="_blank" class="client-cell">
+          <div class="client-name">Recyclerie Solidaire</div>
+            </a>
+          <div class="client-cell"><div class="client-name">Renault</div></div>
+          <div class="client-cell"><div class="client-name">Servier</div></div>
+          <div class="client-cell"><div class="client-name">SMS Concast AG</div></div>
+         <a href="https://www.smokey-paris.com/" target="_blank" class="client-cell">
+          <div class="client-name">Smokey</div>
+           </a>
+          <div class="client-cell"><div class="client-name">Stellantis</div></div>
+          <div class="client-cell"><div class="client-name">TNP Consultant</div></div>
+          <div class="client-cell"><div class="client-name">Vinci Holding</div></div>
+          <div class="client-cell"><div class="client-name">Yamaha</div></div>
+        </div>
   </div>
 </section>
  
