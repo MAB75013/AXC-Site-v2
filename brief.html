@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Brief Site Web · AXC</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0D0D0D;color:#F5F0E8;font-family:Georgia,'Times New Roman',serif}
+  input,textarea{font-family:Georgia,'Times New Roman',serif}
+  input:focus,textarea:focus{border-color:#C9A84C!important;outline:none}
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:#111}
+  ::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:3px}
+  .saved-toast{
+    position:fixed;bottom:24px;right:24px;
+    background:#1a1a1a;border:1px solid #C9A84C;color:#C9A84C;
+    padding:10px 18px;border-radius:4px;font-size:12px;
+    letter-spacing:0.1em;text-transform:uppercase;
+    opacity:0;transition:opacity 0.3s;pointer-events:none;z-index:999
+  }
+  .saved-toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div id="root"></div>
+<div class="saved-toast" id="toast">Brouillon sauvegardé</div>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const GOLD="#C9A84C",DARK="#0D0D0D",IVORY="#F5F0E8",MUTED="#888",CARD="#141414",BORDER="#2a2a2a";
+
+const SECTEURS=["Conseil & Services","Retail & Commerce","Restauration & Food","Immobilier","Beauté & Bien-être","Santé & Médical","Artisanat & Luxe","Tech & Digital","BTP & Industrie","Culture & Événementiel","Éducation & Formation","Autre"];
+const PAGES=["Accueil","À propos / Équipe","Services / Offres","Portfolio / Réalisations","Contact","Blog / Actualités","FAQ","Témoignages clients","Mentions légales","Devis en ligne","Page tarifaire"];
+const STYLES=[{key:"luxe",label:"Luxe & Élégance",desc:"Sombre, or, typographie raffinée"},{key:"moderne",label:"Moderne & Épuré",desc:"Blanc, gris, lignes claires"},{key:"corporate",label:"Corporate & Institutionnel",desc:"Bleu, structuré, sérieux"},{key:"creatif",label:"Créatif & Audacieux",desc:"Couleurs vives, asymétrique"},{key:"chaleureux",label:"Chaleureux & Humain",desc:"Tons chauds, photos lifestyle"},{key:"autre",label:"Autre (préciser ci-dessous)",desc:""}];
+const FONCTIONNALITES=["Formulaire de contact","Carte Google Maps","Galerie photos / Portfolio","Section témoignages","FAQ accordion","Liens réseaux sociaux","Bouton WhatsApp / Click-to-call","Chatbot ou widget live chat","Multilingue (FR/EN/autre)","Animation & effets visuels","Vidéo en fond d'écran","Newsletter / formulaire d'inscription","Intégration Calendly / prise de RDV","Bandeau cookie RGPD"];
+const CONTENUS=["Logo fourni","Textes rédigés par le client","Photos professionnelles disponibles","Charte graphique existante","Vidéos disponibles","Aucun contenu — tout est à créer"];
+const DELAIS=["Urgent (< 2 semaines)","Standard (2 à 4 semaines)","Flexible (+ d'un mois)","À définir ensemble"];
+const INSPIRATIONS=["Apple.com — ultra-minimaliste, produit roi","Chanel.com — luxe, noir & blanc, éditorial","Airbnb — photos immersives, chaleureux","Linear.app — tech, dark mode, épuré","Bottega Veneta — mode, espace négatif","Je n'ai pas d'idée précise"];
+const OFFRES=[
+  {key:"essentiel",nom:"Essentiel",prix:"800 – 1 500 €",description:"Vitrine clé en main",features:["3 à 5 pages","Design responsive","Formulaire contact","Optimisation mobile","Livraison 10 jours"],popular:false},
+  {key:"pro",nom:"Pro",prix:"1 500 – 3 500 €",description:"Site sur-mesure",features:["5 à 8 pages","Design + animations","SEO on-page","Galerie / portfolio","Intégrations avancées","Livraison 3 semaines"],popular:true},
+  {key:"premium",nom:"Premium",prix:"3 500 – 7 000 €",description:"Expérience haut de gamme",features:["Pages illimitées","Identité visuelle","Animations premium","Multilingue","Blog / CMS","Maintenance 3 mois"],popular:false}
+];
+const STEPS=[
+  {id:0,label:"Identité",title:"Votre entreprise",sub:"Commençons par les bases. Qui êtes-vous et quelle est votre activité ?"},
+  {id:1,label:"Objectifs",title:"Objectifs & cible",sub:"Un site efficace parle à une cible précise. Définissons ensemble vos objectifs."},
+  {id:2,label:"Contenu",title:"Pages & contenu",sub:"Quelles pages souhaitez-vous ? Quel contenu avez-vous déjà ?"},
+  {id:3,label:"Design",title:"Direction artistique",sub:"L'identité visuelle fait tout. Définissons le style qui vous ressemble."},
+  {id:4,label:"Offre",title:"Formule & budget",sub:"Choisissez la formule adaptée à vos ambitions et votre calendrier."},
+  {id:5,label:"Récap",title:"Brief final",sub:"Votre brief est prêt. Copiez-le et envoyez-le pour lancer la création."}
+];
+
+const EMPTY={nom:"",secteur:"",description:"",localisation:"",siteExistant:"",objectifPrincipal:"",cible:"",concurrents:"",inspiration:[],inspirationTexte:"",pages:[],contenuDispo:[],autreContenu:"",style:"",couleurs:"",autreStyle:"",fonctionnalites:[],autresFonctionnalites:"",offre:"",delai:"",budget:"",notesSup:""};
+
+const s={
+  inp:{width:"100%",background:CARD,border:`1px solid ${BORDER}`,borderRadius:"4px",color:IVORY,padding:"12px 16px",fontSize:"15px",fontFamily:"Georgia,serif",boxSizing:"border-box"},
+  ta:{width:"100%",background:CARD,border:`1px solid ${BORDER}`,borderRadius:"4px",color:IVORY,padding:"12px 16px",fontSize:"15px",fontFamily:"Georgia,serif",boxSizing:"border-box",resize:"vertical",minHeight:"90px"},
+  lbl:{display:"block",fontSize:"12px",letterSpacing:"0.15em",textTransform:"uppercase",color:GOLD,marginBottom:"8px",marginTop:"28px"},
+  hint:{fontSize:"12px",color:"#666",marginTop:"6px",fontStyle:"italic"},
+  chip:(sel)=>({padding:"8px 16px",borderRadius:"3px",border:`1px solid ${sel?GOLD:BORDER}`,background:sel?"rgba(201,168,76,0.12)":CARD,color:sel?GOLD:MUTED,fontSize:"13px",cursor:"pointer",fontFamily:"Georgia,serif",letterSpacing:"0.03em",transition:"all 0.2s"}),
+  pCard:(sel)=>({border:`1px solid ${sel?GOLD:BORDER}`,borderRadius:"6px",padding:"20px 16px",background:sel?"rgba(201,168,76,0.07)":CARD,cursor:"pointer",transition:"all 0.25s",position:"relative"}),
+};
+
+function Chips({options,selected,multi,onChange}){
+  const toggle=v=>multi?(selected.includes(v)?onChange(selected.filter(x=>x!==v)):onChange([...selected,v])):onChange(v);
+  return <div style={{display:"flex",flexWrap:"wrap",gap:"10px",marginTop:"4px"}}>
+    {options.map(o=><span key={o} style={s.chip(multi?selected.includes(o):selected===o)} onClick={()=>toggle(o)}>{o}</span>)}
+  </div>;
+}
+
+function showToast(){
+  const t=document.getElementById("toast");
+  t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),2000);
+}
+
+function App(){
+  const [step,setStep]=useState(0);
+  const [data,setData]=useState(()=>{
+    try{const saved=localStorage.getItem("axc_brief");return saved?JSON.parse(saved):EMPTY;}catch{return EMPTY;}
+  });
+  const [copied,setCopied]=useState(false);
+  const [sent,setSent]=useState(false);
+  const saveTimer=useRef(null);
+
+  const set=(k,v)=>setData(d=>{
+    const next={...d,[k]:v};
+    clearTimeout(saveTimer.current);
+    saveTimer.current=setTimeout(()=>{localStorage.setItem("axc_brief",JSON.stringify(next));showToast();},600);
+    return next;
+  });
+
+  const brief=()=>`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+BRIEF CLIENT — CRÉATION DE SITE VITRINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+▸ IDENTITÉ
+  Nom de l'entreprise : ${data.nom||"—"}
+  Secteur d'activité  : ${data.secteur||"—"}
+  Localisation        : ${data.localisation||"—"}
+  Description         : ${data.description||"—"}
+  Site actuel         : ${data.siteExistant||"Aucun"}
+
+▸ OBJECTIFS
+  Objectif principal  : ${data.objectifPrincipal||"—"}
+  Cible visée         : ${data.cible||"—"}
+  Concurrents / réf   : ${data.concurrents||"—"}
+
+▸ INSPIRATIONS
+  Sites de référence  : ${data.inspiration.length?data.inspiration.join(", "):"—"}
+  Précisions          : ${data.inspirationTexte||"—"}
+
+▸ PAGES SOUHAITÉES
+  ${data.pages.length?data.pages.join(" · "):"Non précisé"}
+
+▸ CONTENU DISPONIBLE
+  ${data.contenuDispo.length?data.contenuDispo.join(" · "):"—"}
+  Autres précisions   : ${data.autreContenu||"—"}
+
+▸ DIRECTION ARTISTIQUE
+  Style               : ${data.style||"—"}
+  Couleurs souhaitées : ${data.couleurs||"—"}
+  Précisions style    : ${data.autreStyle||"—"}
+
+▸ FONCTIONNALITÉS
+  ${data.fonctionnalites.length?data.fonctionnalites.join(" · "):"—"}
+  Autres              : ${data.autresFonctionnalites||"—"}
+
+▸ OFFRE & DÉLAI
+  Formule choisie     : ${data.offre?(OFFRES.find(o=>o.key===data.offre)?.nom+" ("+OFFRES.find(o=>o.key===data.offre)?.prix+")"):"—"}
+  Délai souhaité      : ${data.delai||"—"}
+  Budget indicatif    : ${data.budget||"Cf. formule"}
+
+▸ NOTES SUPPLÉMENTAIRES
+  ${data.notesSup||"Aucune"}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[Brief généré via AXC · ariesxconsulting.com]
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`;
+
+  const handleCopy=()=>{navigator.clipboard.writeText(brief());setCopied(true);setTimeout(()=>setCopied(false),2500);};
+
+  const handleEmail=()=>{
+    const subject=encodeURIComponent(`Brief site web — ${data.nom||"Nouveau client"}`);
+    const body=encodeURIComponent(brief());
+    window.location.href=`mailto:contact@ariesxconsulting.com?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
+  const reset=()=>{
+    if(confirm("Effacer ce brief et recommencer ?")){
+      localStorage.removeItem("axc_brief");
+      setData(EMPTY);setStep(0);setSent(false);
+    }
+  };
+
+  const currentStep=STEPS[step];
+
+  const renderStep=()=>{
+    switch(step){
+      case 0: return <>
+        <label style={s.lbl}>Nom de l'entreprise</label>
+        <input style={s.inp} placeholder="Ex. : Studio Lumière, Cabinet Moreau…" value={data.nom} onChange={e=>set("nom",e.target.value)}/>
+        <label style={s.lbl}>Secteur d'activité</label>
+        <Chips options={SECTEURS} selected={data.secteur} multi={false} onChange={v=>set("secteur",v)}/>
+        <label style={s.lbl}>Localisation</label>
+        <input style={s.inp} placeholder="Ex. : Paris 8e, Lyon, International…" value={data.localisation} onChange={e=>set("localisation",e.target.value)}/>
+        <label style={s.lbl}>Décrivez votre activité en 2-3 phrases</label>
+        <textarea style={s.ta} placeholder="Qui êtes-vous ? Que proposez-vous ? Qu'est-ce qui vous différencie ?" value={data.description} onChange={e=>set("description",e.target.value)}/>
+        <label style={s.lbl}>Avez-vous déjà un site web ?</label>
+        <input style={s.inp} placeholder="URL ou 'Non, c'est ma première présence en ligne'" value={data.siteExistant} onChange={e=>set("siteExistant",e.target.value)}/>
+      </>;
+      case 1: return <>
+        <label style={s.lbl}>Objectif principal du site</label>
+        <Chips options={["Gagner en crédibilité / visibilité","Générer des demandes de devis / leads","Présenter mon portfolio / travaux","Remplacer un site vieillissant","Accompagner un lancement d'activité"]} selected={data.objectifPrincipal} multi={false} onChange={v=>set("objectifPrincipal",v)}/>
+        <label style={s.lbl}>Qui sont vos clients cibles ?</label>
+        <textarea style={s.ta} placeholder="Ex. : Particuliers aisés 35-55 ans en région parisienne…" value={data.cible} onChange={e=>set("cible",e.target.value)}/>
+        <p style={s.hint}>💡 Plus votre cible est précise, plus le site sera efficace.</p>
+        <label style={s.lbl}>Sites de référence / inspiration</label>
+        <Chips options={INSPIRATIONS} selected={data.inspiration} multi={true} onChange={v=>set("inspiration",v)}/>
+        <textarea style={{...s.ta,marginTop:"10px"}} placeholder="Collez des URL de sites que vous aimez et dites pourquoi…" value={data.inspirationTexte} onChange={e=>set("inspirationTexte",e.target.value)}/>
+        <label style={s.lbl}>Concurrents ou acteurs de référence</label>
+        <input style={s.inp} placeholder="Ex. : Concurrent A, Agence B…" value={data.concurrents} onChange={e=>set("concurrents",e.target.value)}/>
+      </>;
+      case 2: return <>
+        <label style={s.lbl}>Pages souhaitées</label>
+        <p style={s.hint}>💡 Un bon vitrine commence par : Accueil + Services + À propos + Contact</p>
+        <div style={{marginTop:"8px"}}><Chips options={PAGES} selected={data.pages} multi={true} onChange={v=>set("pages",v)}/></div>
+        <label style={s.lbl}>Contenu disponible</label>
+        <Chips options={CONTENUS} selected={data.contenuDispo} multi={true} onChange={v=>set("contenuDispo",v)}/>
+        <p style={s.hint}>💡 Sans photos pro, des visuels libres de droit adaptés à votre secteur peuvent être intégrés.</p>
+        <label style={s.lbl}>Précisions sur le contenu</label>
+        <textarea style={s.ta} placeholder="Ex. : 3 études de cas rédigées, témoignages à intégrer…" value={data.autreContenu} onChange={e=>set("autreContenu",e.target.value)}/>
+      </>;
+      case 3: return <>
+        <label style={s.lbl}>Style visuel souhaité</label>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"10px",marginTop:"4px"}}>
+          {STYLES.map(st=><div key={st.key} style={{...s.pCard(data.style===st.key),padding:"14px 16px"}} onClick={()=>set("style",st.key)}>
+            <div style={{fontSize:"11px",letterSpacing:"0.18em",textTransform:"uppercase",color:GOLD,marginBottom:"3px"}}>{st.label}</div>
+            {st.desc&&<div style={{fontSize:"11px",color:"#666",fontStyle:"italic"}}>{st.desc}</div>}
+          </div>)}
+        </div>
+        {data.style==="autre"&&<>
+          <label style={s.lbl}>Décrivez votre style</label>
+          <textarea style={s.ta} placeholder="Ex. : Artisanal, tons ocre, textures naturelles…" value={data.autreStyle} onChange={e=>set("autreStyle",e.target.value)}/>
+        </>}
+        <label style={s.lbl}>Couleurs existantes ou souhaitées</label>
+        <input style={s.inp} placeholder="Ex. : Bleu marine #1A2E4A + or #C9A84C / Pas d'idée" value={data.couleurs} onChange={e=>set("couleurs",e.target.value)}/>
+        <label style={s.lbl}>Fonctionnalités à intégrer</label>
+        <Chips options={FONCTIONNALITES} selected={data.fonctionnalites} multi={true} onChange={v=>set("fonctionnalites",v)}/>
+        <label style={s.lbl}>Autres fonctionnalités</label>
+        <input style={s.inp} placeholder="Précisez si besoin…" value={data.autresFonctionnalites} onChange={e=>set("autresFonctionnalites",e.target.value)}/>
+      </>;
+      case 4: return <>
+        <label style={s.lbl}>Choisissez votre formule</label>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"16px",marginTop:"4px"}}>
+          {OFFRES.map(o=><div key={o.key} style={s.pCard(data.offre===o.key)} onClick={()=>set("offre",o.key)}>
+            {o.popular&&<span style={{position:"absolute",top:"-10px",right:"12px",background:GOLD,color:DARK,fontSize:"9px",letterSpacing:"0.12em",textTransform:"uppercase",padding:"3px 8px",borderRadius:"2px",fontWeight:"bold"}}>Recommandé</span>}
+            <div style={{fontSize:"11px",letterSpacing:"0.2em",textTransform:"uppercase",color:GOLD,marginBottom:"6px"}}>{o.nom}</div>
+            <div style={{fontSize:"22px",color:IVORY,marginBottom:"6px"}}>{o.prix}</div>
+            <div style={{fontSize:"11px",color:"#666",fontStyle:"italic",marginBottom:"12px"}}>{o.description}</div>
+            {o.features.map(f=><div key={f} style={{fontSize:"12px",color:MUTED,marginBottom:"4px",paddingLeft:"12px",position:"relative"}}>
+              <span style={{position:"absolute",left:"0",color:GOLD}}>·</span>{f}
+            </div>)}
+          </div>)}
+        </div>
+        <label style={s.lbl}>Délai souhaité</label>
+        <Chips options={DELAIS} selected={data.delai} multi={false} onChange={v=>set("delai",v)}/>
+        <label style={s.lbl}>Budget indicatif (optionnel)</label>
+        <input style={s.inp} placeholder="Ex. : 2 000 € / Conforme à la formule Pro…" value={data.budget} onChange={e=>set("budget",e.target.value)}/>
+        <label style={s.lbl}>Notes supplémentaires</label>
+        <textarea style={s.ta} placeholder="Contraintes techniques, demandes particulières, questions…" value={data.notesSup} onChange={e=>set("notesSup",e.target.value)}/>
+      </>;
+      case 5: return <>
+        <div style={{marginBottom:"20px",color:MUTED,fontSize:"14px",lineHeight:"1.7"}}>
+          Brief généré à partir de vos réponses. Copiez-le ou envoyez-le directement par email.
+        </div>
+        <div style={{background:"#0a0a0a",border:`1px solid ${BORDER}`,borderRadius:"6px",padding:"24px",fontFamily:"monospace",fontSize:"12px",color:"#aaa",whiteSpace:"pre-wrap",lineHeight:"1.7",maxHeight:"380px",overflowY:"auto"}}>
+          {brief()}
+        </div>
+        <div style={{display:"flex",gap:"12px",alignItems:"center",marginTop:"20px",flexWrap:"wrap"}}>
+          <button onClick={handleCopy} style={{padding:"11px 24px",background:"transparent",color:GOLD,border:`1px solid ${GOLD}`,borderRadius:"3px",fontSize:"11px",letterSpacing:"0.15em",textTransform:"uppercase",cursor:"pointer",fontFamily:"Georgia,serif"}}>
+            {copied?"✓ Copié !":"Copier le brief"}
+          </button>
+          <button onClick={handleEmail} style={{padding:"11px 24px",background:GOLD,color:DARK,border:"none",borderRadius:"3px",fontSize:"11px",letterSpacing:"0.15em",textTransform:"uppercase",cursor:"pointer",fontFamily:"Georgia,serif",fontWeight:"bold"}}>
+            {sent?"✓ Email ouvert":"Envoyer par email →"}
+          </button>
+          <span style={{fontSize:"12px",color:"#555",fontStyle:"italic"}}>
+            Envoi vers contact@ariesxconsulting.com
+          </span>
+        </div>
+      </>;
+    }
+  };
+
+  return <div style={{background:DARK,minHeight:"100vh",color:IVORY,fontFamily:"Georgia,'Times New Roman',serif"}}>
+    {/* Header */}
+    <div style={{borderBottom:`1px solid ${BORDER}`,padding:"24px 40px 20px",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+      <a href="index.html" style={{fontSize:"12px",letterSpacing:"0.25em",color:GOLD,textTransform:"uppercase",fontFamily:"Georgia,serif",textDecoration:"none"}}>
+        ← AXC
+      </a>
+      <div style={{display:"flex",gap:"8px",alignItems:"center"}}>
+        {STEPS.map((_,i)=><div key={i} style={{width:i===step?"28px":"8px",height:"8px",borderRadius:"4px",background:i<step?`rgba(201,168,76,0.5)`:i===step?GOLD:BORDER,transition:"all 0.3s"}}/>)}
+      </div>
+      <span style={{fontSize:"12px",color:MUTED,letterSpacing:"0.05em"}}>
+        Étape {step+1} / {STEPS.length}
+      </span>
+    </div>
+
+    {/* Main */}
+    <div style={{maxWidth:"720px",margin:"0 auto",padding:"48px 24px 80px"}}>
+      <p style={{fontSize:"11px",letterSpacing:"0.2em",color:GOLD,textTransform:"uppercase",marginBottom:"12px"}}>{currentStep.label}</p>
+      <h1 style={{fontSize:"32px",fontWeight:"normal",lineHeight:"1.2",marginBottom:"8px",color:IVORY}}>{currentStep.title}</h1>
+      <p style={{fontSize:"15px",color:MUTED,marginBottom:"40px",lineHeight:"1.6"}}>{currentStep.sub}</p>
+
+      {renderStep()}
+
+      <div style={{display:"flex",gap:"12px",marginTop:"48px",justifyContent:"space-between",alignItems:"center"}}>
+        {step>0
+          ?<button onClick={()=>setStep(s=>s-1)} style={{padding:"13px 24px",background:"transparent",color:MUTED,border:`1px solid ${BORDER}`,borderRadius:"3px",fontSize:"11px",letterSpacing:"0.12em",textTransform:"uppercase",cursor:"pointer",fontFamily:"Georgia,serif"}}>← Retour</button>
+          :<div/>}
+        <div style={{display:"flex",gap:"12px",alignItems:"center"}}>
+          {step===5&&<button onClick={reset} style={{padding:"13px 20px",background:"transparent",color:"#555",border:`1px solid ${BORDER}`,borderRadius:"3px",fontSize:"11px",letterSpacing:"0.1em",textTransform:"uppercase",cursor:"pointer",fontFamily:"Georgia,serif"}}>Nouveau brief</button>}
+          {step<5&&<button onClick={()=>setStep(s=>s+1)} style={{padding:"13px 36px",background:GOLD,color:DARK,border:"none",borderRadius:"3px",fontSize:"11px",letterSpacing:"0.15em",textTransform:"uppercase",cursor:"pointer",fontFamily:"Georgia,serif",fontWeight:"bold"}}>Continuer →</button>}
+        </div>
+      </div>
+
+      <p style={{marginTop:"32px",fontSize:"11px",color:"#444",textAlign:"center",letterSpacing:"0.08em"}}>
+        Brouillon sauvegardé automatiquement dans votre navigateur
+      </p>
+    </div>
+  </div>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
