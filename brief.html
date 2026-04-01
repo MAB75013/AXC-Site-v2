@@ -89,19 +89,8 @@ function App(){
   const [copied,setCopied]=useState(false);
   const [sent,setSent]=useState(false);
   const saveTimer=useRef(null);
-  const topRef=useRef(null);
-  const isFirstRender=useRef(true);
 
-  useEffect(()=>{
-    if(isFirstRender.current){
-      isFirstRender.current=false;
-      return;
-    }
-    topRef.current?.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-    });
-  },[step]);
+  useEffect(()=>{window.scrollTo({top:0,behavior:"smooth"});}, [step]);
 
   const set=(k,v)=>setData(d=>{
     const next={...d,[k]:v};
@@ -288,7 +277,7 @@ BRIEF CLIENT — CRÉATION DE SITE VITRINE
     </div>
 
     {/* Main */}
-    <div ref={topRef} style={{maxWidth:"720px",margin:"0 auto",padding:"48px 24px 80px"}}>
+    <div style={{maxWidth:"720px",margin:"0 auto",padding:"48px 24px 80px"}}>
       <p style={{fontSize:"11px",letterSpacing:"0.2em",color:GOLD,textTransform:"uppercase",marginBottom:"12px"}}>{currentStep.label}</p>
       <h1 style={{fontSize:"32px",fontWeight:"normal",lineHeight:"1.2",marginBottom:"8px",color:IVORY}}>{currentStep.title}</h1>
       <p style={{fontSize:"15px",color:MUTED,marginBottom:"40px",lineHeight:"1.6"}}>{currentStep.sub}</p>
