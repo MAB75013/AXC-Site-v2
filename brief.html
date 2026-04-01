@@ -95,6 +95,9 @@ function App(){
     clearTimeout(saveTimer.current);
     saveTimer.current=setTimeout(()=>{localStorage.setItem("axc_brief",JSON.stringify(next));showToast();},600);
     return next;
+
+   useEffect(() => {window.scrollTo({top: 0,     behavior: "smooth"});}, [step]);
+   
   });
 
   const brief=()=>`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
